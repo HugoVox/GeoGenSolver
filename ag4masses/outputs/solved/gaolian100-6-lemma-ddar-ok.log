@@ -1,0 +1,78 @@
+++ BATCH_SIZE=32
+++ BEAM_SIZE=128
+++ DEPTH=8
+++ NWORKERS=8
+++ PROB_FILE=/home/tong_peng/onedrive_googie32u/agtest/myexamples.txt
+++ PROB=gaolian100-6-lemma
+++ MODEL=alphageometry
+++ DATA=/home/tong_peng/pyvenv/ag/ag_ckpt_vocab
+++ MELIAD_PATH=/home/tong_peng/pyvenv/ag/meliad_lib/meliad
+++ export PYTHONPATH=:/home/tong_peng/onedrive_googie32u/alphageometry:/home/tong_peng/pyvenv/ag:/home/tong_peng/pyvenv/ag/meliad_lib/meliad
+++ PYTHONPATH=:/home/tong_peng/onedrive_googie32u/alphageometry:/home/tong_peng/pyvenv/ag:/home/tong_peng/pyvenv/ag/meliad_lib/meliad
+++ DDAR_ARGS=(--defs_file=$AGDIR/defs.txt --rules_file=$AGDIR/rules.txt)
+++ SEARCH_ARGS=(--beam_size=$BEAM_SIZE --search_depth=$DEPTH)
+++ LM_ARGS=(--ckpt_path=$DATA --vocab_path=$DATA/geometry.757.model --gin_search_paths=$MELIAD_PATH/transformer/configs,$AGDIR --gin_file=base_htrans.gin --gin_file=size/medium_150M.gin --gin_file=options/positions_t5.gin --gin_file=options/lr_cosine_decay.gin --gin_file=options/seq_1024_nocache.gin --gin_file=geometry_150M_generate.gin --gin_param=DecoderOnlyLanguageModelGenerate.output_token_losses=True --gin_param=TransformerTaskConfig.batch_size=$BATCH_SIZE --gin_param=TransformerTaskConfig.sequence_length=128 --gin_param=Trainer.restore_state_variables=False)
+++ true ==========================================
+++ python -m alphageometry --alsologtostderr --problems_file=/home/tong_peng/onedrive_googie32u/agtest/myexamples.txt --problem_name=gaolian100-6-lemma --mode=alphageometry --defs_file=/home/tong_peng/onedrive_googie32u/alphageometry/defs.txt --rules_file=/home/tong_peng/onedrive_googie32u/alphageometry/rules.txt --beam_size=128 --search_depth=8 --ckpt_path=/home/tong_peng/pyvenv/ag/ag_ckpt_vocab --vocab_path=/home/tong_peng/pyvenv/ag/ag_ckpt_vocab/geometry.757.model --gin_search_paths=/home/tong_peng/pyvenv/ag/meliad_lib/meliad/transformer/configs,/home/tong_peng/onedrive_googie32u/alphageometry --gin_file=base_htrans.gin --gin_file=size/medium_150M.gin --gin_file=options/positions_t5.gin --gin_file=options/lr_cosine_decay.gin --gin_file=options/seq_1024_nocache.gin --gin_file=geometry_150M_generate.gin --gin_param=DecoderOnlyLanguageModelGenerate.output_token_losses=True --gin_param=TransformerTaskConfig.batch_size=32 --gin_param=TransformerTaskConfig.sequence_length=128 --gin_param=Trainer.restore_state_variables=False --out_file=/home/tong_peng/onedrive_googie32u/agtest/ag.out --n_workers=8
+I0321 22:27:00.674356 136990061826048 graph.py:498] gaolian100-6-lemma
+I0321 22:27:00.674595 136990061826048 graph.py:499] a = free a; b = free b; c = on_circle c a b; d = on_circle d a b; e = lc_tangent e c a, lc_tangent e d a; f = midpoint f c d; g = on_line g e b, on_circle g a b ? eqangle f d f g f b f d
+I0321 22:27:06.853825 136990061826048 alphageometry.py:200] 
+==========================
+ * From theorem premises:
+A B C D E F G : Points
+AC = AB [00]
+AD = AB [01]
+CE ⟂ AC [02]
+DE ⟂ AD [03]
+D,F,C are collinear [04]
+FC = FD [05]
+G,B,E are collinear [06]
+AG = AB [07]
+
+ * Auxiliary Constructions:
+: Points
+
+
+ * Proof steps:
+001. AG = AB [07] & AC = AB [00] ⇒  A is the circumcenter of \Delta CGB [08]
+002. A is the circumcenter of \Delta CGB [08] & CE ⟂ AC [02] ⇒  ∠ECG = ∠CBG [09]
+003. B,G,E are collinear [06] & ∠ECG = ∠CBG [09] ⇒  ∠BCE = ∠EGC [10]
+004. B,G,E are collinear [06] ⇒  ∠BEC = ∠GEC [11]
+005. ∠BCE = ∠EGC [10] & ∠BEC = ∠GEC [11] (Similar Triangles)⇒  BC:BE = CG:CE [12]
+006. ∠BCE = ∠EGC [10] & ∠BEC = ∠GEC [11] (Similar Triangles)⇒  CB:CE = GC:GE [13]
+007. AG = AB [07] & AD = AB [01] & AC = AB [00] ⇒  A is the circumcenter of \Delta DGC [14]
+008. A is the circumcenter of \Delta DGC [14] & DE ⟂ AD [03] ⇒  ∠CDE = ∠CGD [15]
+009. A is the circumcenter of \Delta DGC [14] & CE ⟂ AC [02] ⇒  ∠ECD = ∠CGD [16]
+010. ∠CDE = ∠CGD [15] & ∠ECD = ∠CGD [16] ⇒  ∠ECD = ∠CDE [17]
+011. ∠ECD = ∠CDE [17] ⇒  EC = ED [18]
+012. BC:BE = CG:CE [12] & EC = ED [18] ⇒  BC:BE = GC:ED [19]
+013. AC = AB [00] & AD = AB [01] ⇒  AD = AC [20]
+014. AD = AC [20] & FC = FD [05] ⇒  CD ⟂ AF [21]
+015. C,F,D are collinear [04] & CD ⟂ AF [21] & CE ⟂ AC [02] ⇒  ∠ACE = ∠AFD [22]
+016. D,F,C are collinear [04] & FC = FD [05] ⇒  F is midpoint of DC [23]
+017. A is the circumcenter of \Delta DGC [14] & F is midpoint of DC [23] ⇒  ∠CGD = ∠FAD [24]
+018. DE ⟂ AD [03] & CE ⟂ AC [02] ⇒  ∠ECA = ∠EDA [25]
+019. ∠ECA = ∠EDA [25] ⇒  A,D,E,C are concyclic [26]
+020. A,D,E,C are concyclic [26] ⇒  ∠CAE = ∠CDE [27]
+021. ∠CGD = ∠FAD [24] & ∠CDE = ∠CGD [15] & ∠CAE = ∠CDE [27] ⇒  ∠CAE = ∠FAD [28]
+022. ∠ACE = ∠AFD [22] & ∠CAE = ∠FAD [28] (Similar Triangles)⇒  EC:DF = EA:DA [29]
+023. ∠ACE = ∠AFD [22] & ∠CAE = ∠FAD [28] (Similar Triangles)⇒  AE:AC = AD:AF [30]
+024. AE:AC = AD:AF [30] & AC = AB [00] & AD = AB [01] ⇒  AE:AB = AB:AF [31]
+025. AD = AC [20] & EC = ED [18] ⇒  DC ⟂ AE [32]
+026. DC ⟂ AE [32] & CD ⟂ AF [21] ⇒  ∠EAB = ∠FAB [33]
+027. DC ⟂ AE [32] & CD ⟂ AF [21] ⇒  ∠GAF = ∠GAE [34]
+028. AE:AB = AB:AF [31] & ∠EAB = ∠FAB [33] (Similar Triangles)⇒  AE:AB = BE:FB [35]
+029. EC:DF = EA:DA [29] & EC = ED [18] & AD = AB [01] & AE:AB = BE:FB [35] & FC = FD [05] ⇒  BE:FB = ED:FC [36]
+030. BC:BE = GC:ED [19] & BE:FB = ED:FC [36] ⇒  BC:FB = GC:FC [37]
+031. BC:BE = GC:ED [19] & BE:FB = ED:FC [36] ⇒  BC:GC = FB:FC [38]
+032. CB:CE = GC:GE [13] & EC = ED [18] ⇒  BC:ED = GC:GE [39]
+033. AB:AF = AE:AB [31] & AG = AB [07] ⇒  AG:AF = AE:AG [40]
+034. AG:AF = AE:AG [40] & ∠GAF = ∠GAE [34] (Similar Triangles)⇒  GA:EA = GF:EG [41]
+035. EC:DF = EA:DA [29] & EC = ED [18] & AD = AB [01] & GA:EA = GF:EG [41] & AG = AB [07] & FC = FD [05] ⇒  GE:FG = ED:FC [42]
+036. BC:ED = GC:GE [39] & GE:FG = ED:FC [42] ⇒  GC:BC = FG:FC [43]
+037. GC:BC = FG:FC [43] & FC = FD [05] & BC:GC = FB:FC [38] ⇒  FC:FB = FG:FC [44]
+038. BC:FB = GC:FC [37] & FC:FB = FG:FC [44] (Similar Triangles)⇒  ∠GFC = ∠CFB [45]
+039. C,F,D are collinear [04] & ∠GFC = ∠CFB [45] ⇒  ∠DFG = ∠BFD
+==========================
+
+I0321 22:27:06.854308 136990061826048 alphageometry.py:204] Solution written to /home/tong_peng/onedrive_googie32u/agtest/ag.out.

@@ -1,0 +1,59 @@
+I0210 22:07:57.112957 140473292709888 graph.py:498] angbisec_bline_cyclic
+I0210 22:07:57.113278 140473292709888 graph.py:499] a b c = triangle a b c; d = on_bline d b c, angle_bisector d b a c ? cyclic a b c d
+I0210 22:07:57.142698 140473292709888 alphageometry.py:221] DD+AR failed to solve the problem.
+I0210 22:07:57.142895 140473292709888 alphageometry.py:555] Depth 0. There are 1 nodes to expand:
+I0210 22:07:57.143001 140473292709888 alphageometry.py:559] {S} a : ; b : ; c : ; d : D b d c d 00 ^ a b a d a d a c 01 ^ c b c d b d b c 02 ? O a b c d {F1} x00
+I0210 22:07:57.143262 140473292709888 alphageometry.py:564] Decoding from {S} a : ; b : ; c : ; d : D b d c d 00 ^ a b a d a d a c 01 ^ c b c d b d b c 02 ? O a b c d {F1} x00
+I0210 22:10:02.080104 140473292709888 alphageometry.py:582] Translation: "ERROR: Traceback (most recent call last):
+  File "/home/tong_peng/pyvenv/alphageometry/alphageometry.py", line 454, in try_translate_constrained_to_construct
+    g.copy().add_clause(clause, 0, DEFINITIONS)
+  File "/home/tong_peng/pyvenv/alphageometry/graph.py", line 2637, in add_clause
+    raise PointTooFarError()
+graph.PointTooFarError
+"
+
+I0210 22:10:02.080281 140473292709888 alphageometry.py:582] Translation: "ERROR: Traceback (most recent call last):
+  File "/home/tong_peng/pyvenv/alphageometry/alphageometry.py", line 454, in try_translate_constrained_to_construct
+    g.copy().add_clause(clause, 0, DEFINITIONS)
+  File "/home/tong_peng/pyvenv/alphageometry/graph.py", line 2622, in add_clause
+    nums = draw_fn()
+  File "/home/tong_peng/pyvenv/alphageometry/graph.py", line 2608, in draw_fn
+    return nm.reduce(to_be_intersected, existing_points)
+  File "/home/tong_peng/pyvenv/alphageometry/numericals.py", line 1310, in reduce
+    result = a.intersect(b)
+  File "/home/tong_peng/pyvenv/alphageometry/numericals.py", line 213, in intersect
+    return line_line_intersection(self, obj)
+  File "/home/tong_peng/pyvenv/alphageometry/numericals.py", line 584, in line_line_intersection
+    raise InvalidLineIntersectError
+numericals.InvalidLineIntersectError
+"
+
+I0210 22:10:02.080370 140473292709888 alphageometry.py:582] Translation: "e = on_bline e b a, on_bline e c a"
+
+I0210 22:10:02.080573 140473292709888 graph.py:498] 
+I0210 22:10:02.080641 140473292709888 graph.py:499] a b c = triangle a b c; d = on_bline d b c, angle_bisector d b a c; e = on_bline e b a, on_bline e c a ? cyclic a b c d
+I0210 22:10:02.356900 140473292709888 alphageometry.py:191] 
+==========================
+ * From theorem premises:
+A B C D : Points
+∠BAD = ∠DAC [00]
+DB = DC [01]
+
+ * Auxiliary Constructions:
+E : Points
+EC = EA [02]
+EB = EA [03]
+∠EBA = ∠BAE [04]
+∠ECA = ∠CAE [05]
+
+ * Proof steps:
+001. EB = EA [03] & EC = EA [02] ⇒  EC = EB [06]
+002. EC = EB [06] ⇒  ∠ECB = ∠CBE [07]
+003. DB = DC [01] & EC = EB [06] ⇒  BC ⟂ DE [08]
+004. ∠BAD = ∠DAC [00] & ∠EBA = ∠BAE [04] & ∠ECA = ∠CAE [05] & ∠ECB = ∠CBE [07] & BC ⟂ DE [08] (Angle chase)⇒  ∠DAE = ∠EDA [09]
+005. ∠DAE = ∠EDA [09] ⇒  EA = ED [10]
+006. EC = EA [02] & EB = EA [03] & EA = ED [10] ⇒  C,B,A,D are concyclic
+==========================
+
+I0210 22:10:02.357384 140473292709888 alphageometry.py:195] Solution written to /home/tong_peng/pyvenv/agtest/ag.out2.
+I0210 22:11:16.577270 140473292709888 alphageometry.py:597] Solved.

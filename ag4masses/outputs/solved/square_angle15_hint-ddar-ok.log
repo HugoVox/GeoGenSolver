@@ -1,0 +1,89 @@
+++ BATCH_SIZE=8
+++ BEAM_SIZE=60
+++ DEPTH=16
+++ NWORKERS=12
+++ PROB_FILE=/home/tong_peng/onedrive_googie32u/agtest/myexamples.txt
+++ PROB=square_angle15_hint
+++ MODEL=ddar
+++ DATA=/home/tong_peng/pyvenv/ag/ag_ckpt_vocab
+++ MELIAD_PATH=/home/tong_peng/pyvenv/ag/meliad_lib/meliad
+++ export PYTHONPATH=:/home/tong_peng/onedrive_googie32u/alphageometry:/home/tong_peng/pyvenv/ag:/home/tong_peng/pyvenv/ag/meliad_lib/meliad
+++ PYTHONPATH=:/home/tong_peng/onedrive_googie32u/alphageometry:/home/tong_peng/pyvenv/ag:/home/tong_peng/pyvenv/ag/meliad_lib/meliad
+++ DDAR_ARGS=(--defs_file=$AGDIR/defs.txt --rules_file=$AGDIR/rules.txt)
+++ SEARCH_ARGS=(--beam_size=$BEAM_SIZE --search_depth=$DEPTH)
+++ LM_ARGS=(--ckpt_path=$DATA --vocab_path=$DATA/geometry.757.model --gin_search_paths=$MELIAD_PATH/transformer/configs,$AGDIR --gin_file=base_htrans.gin --gin_file=size/medium_150M.gin --gin_file=options/positions_t5.gin --gin_file=options/lr_cosine_decay.gin --gin_file=options/seq_1024_nocache.gin --gin_file=geometry_150M_generate.gin --gin_param=DecoderOnlyLanguageModelGenerate.output_token_losses=True --gin_param=TransformerTaskConfig.batch_size=$BATCH_SIZE --gin_param=TransformerTaskConfig.sequence_length=128 --gin_param=Trainer.restore_state_variables=False)
+++ true ==========================================
+++ python -m alphageometry --alsologtostderr --problems_file=/home/tong_peng/onedrive_googie32u/agtest/myexamples.txt --problem_name=square_angle15_hint --mode=ddar --defs_file=/home/tong_peng/onedrive_googie32u/alphageometry/defs.txt --rules_file=/home/tong_peng/onedrive_googie32u/alphageometry/rules.txt --beam_size=60 --search_depth=16 --ckpt_path=/home/tong_peng/pyvenv/ag/ag_ckpt_vocab --vocab_path=/home/tong_peng/pyvenv/ag/ag_ckpt_vocab/geometry.757.model --gin_search_paths=/home/tong_peng/pyvenv/ag/meliad_lib/meliad/transformer/configs,/home/tong_peng/onedrive_googie32u/alphageometry --gin_file=base_htrans.gin --gin_file=size/medium_150M.gin --gin_file=options/positions_t5.gin --gin_file=options/lr_cosine_decay.gin --gin_file=options/seq_1024_nocache.gin --gin_file=geometry_150M_generate.gin --gin_param=DecoderOnlyLanguageModelGenerate.output_token_losses=True --gin_param=TransformerTaskConfig.batch_size=8 --gin_param=TransformerTaskConfig.sequence_length=128 --gin_param=Trainer.restore_state_variables=False --out_file=/home/tong_peng/onedrive_googie32u/agtest/ag.out2 --n_workers=12
+I0309 23:40:56.050346 139793490157568 graph.py:498] square_angle15_hint
+I0309 23:40:56.050746 139793490157568 graph.py:499] a b c d = isquare a b c d; e = s_angle c d e 15, s_angle d c e -15; f = reflect f e a c ? cong e a a b
+I0309 23:41:21.521977 139793490157568 alphageometry.py:200] 
+==========================
+ * From theorem premises:
+A B C D E : Points
+AB ⟂ BC [00]
+AB = BC [01]
+AB ∥ CD [02]
+AD ∥ BC [03]
+∠EDC = 1_PI/12 [04]
+∠ECD = 1_1PI/12 [05]
+
+ * Auxiliary Constructions:
+F : Points
+CE = CF [06]
+AE = AF [07]
+
+ * Proof steps:
+001. AB ∥ CD [02] & BC ∥ AD [03] ⇒  ∠ABC = ∠CDA [08]
+002. BC ∥ AD [03] ⇒  ∠ACB = ∠CAD [09]
+003. ∠ABC = ∠CDA [08] & ∠ACB = ∠CAD [09] (Similar Triangles)⇒  AB = CD [10]
+004. ∠ABC = ∠CDA [08] & ∠ACB = ∠CAD [09] (Similar Triangles)⇒  CB = AD [11]
+005. ∠ABC = ∠CDA [08] & ∠ACB = ∠CAD [09] (Similar Triangles)⇒  BA:BC = DC:DA [12]
+006. CE = CF [06] ⇒  ∠CFE = ∠FEC [13]
+007. ∠EDC = 1_PI/12 [04] & AB ∥ CD [02] ⇒  ∠(DE-AB) = 1_PI/12 [14]
+008. ∠ECD = 1_1PI/12 [05] & AB ∥ CD [02] ⇒  ∠(CE-AB) = 1_1PI/12 [15]
+009. ∠EDC = 1_PI/12 [04] & AB ∥ CD [02] & ∠(CE-AB) = 1_1PI/12 [15] ⇒  ∠(CE-AB) = ∠(AB-DE) [16]
+010. ∠(CE-AB) = ∠(AB-DE) [16] & AB ∥ CD [02] ⇒  ∠ECD = ∠CDE [17]
+011. ∠ECD = ∠CDE [17] ⇒  EC = ED [18]
+012. AB ⟂ BC [00] & ∠(DE-AB) = 1_PI/12 [14] (Angle chase)⇒  ∠(BC-DE) = 5_PI/12 [19]
+013. AB ⟂ BC [00] & ∠(CE-AB) = 1_1PI/12 [15] (Angle chase)⇒  ∠ECB = 5_PI/12 [20]
+014. ∠(BC-DE) = 5_PI/12 [19] & ∠ECB = 5_PI/12 [20] & BC ∥ AD [03] ⇒  ∠ECB = ∠ADE [21]
+015. EC = ED [18] & CB = AD [11] & ∠ECB = ∠ADE [21] (SAS)⇒  BE = AE [22]
+016. AB ⟂ BC [00] & BC ∥ AD [03] & AB ∥ CD [02] ⇒  ∠ABC = ∠ADC [23]
+017. ∠ABC = ∠ADC [23] ⇒  B,C,A,D are concyclic [24]
+018. AB ∥ CD [02] ⇒  ∠BCD = ∠CBA [25]
+019. B,C,A,D are concyclic [24] & ∠BCD = ∠CBA [25] ⇒  BD = CA [26]
+020. BE = AE [22] & EC = ED [18] & BD = CA [26] (SSS)⇒  ∠(BD-CE) = ∠(DE-AC) [27]
+021. BA:BC = DC:DA [12] & AB = BC [01] ⇒  DC = DA [28]
+022. DC = DA [28] & AB = BC [01] ⇒  AC ⟂ DB [29]
+023. AE = AF [07] & CE = CF [06] ⇒  EF ⟂ AC [30]
+024. ∠(BD-CE) = ∠(DE-AC) [27] & AC ⟂ DB [29] & EF ⟂ AC [30] ⇒  ∠FEC = ∠(DE-AC) [31]
+025. AB = BC [01] ⇒  ∠BAC = ∠ACB [32]
+026. AB ⟂ BC [00] & ∠(DE-AB) = 1_PI/12 [14] & ∠BAC = ∠ACB [32] (Angle chase)⇒  ∠(DE-AC) = 1_PI/3 [33]
+027. AB ⟂ BC [00] & ∠(CE-AB) = 1_1PI/12 [15] & ∠BAC = ∠ACB [32] & ∠CFE = ∠FEC [13] & EF ⟂ AC [30] (Angle chase)⇒  ∠ECF = 1_PI/3 [34]
+028. ∠CFE = ∠FEC [13] & ∠FEC = ∠(DE-AC) [31] & ∠(DE-AC) = 1_PI/3 [33] & ∠ECF = 1_PI/3 [34] ⇒  ∠ECF = ∠CFE [35]
+029. ∠ECF = ∠CFE [35] ⇒  EC = EF [36]
+030. AB = BC [01] & AB = CD [10] ⇒  CD = CB [37]
+031. AE = AF [07] & BE = AE [22] ⇒  BE = AF [38]
+032. CE = CF [06] & EC = ED [18] ⇒  ED = FC [39]
+033. BE = AF [38] & ED = FC [39] & BD = CA [26] (SSS)⇒  ∠(BD-AC) = ∠(DE-CF) [40]
+034. AB ⟂ BC [00] & BC ∥ AD [03] ⇒  AD ⟂ BA [41]
+035. AD ⟂ BA [41] & EF ⟂ AC [30] ⇒  ∠DAB = ∠(AC-EF) [42]
+036. AD ⟂ BA [41] & EF ⟂ AC [30] ⇒  ∠DAB = ∠(EF-AC) [43]
+037. ∠(BD-AC) = ∠(DE-CF) [40] & AC ⟂ DB [29] & EF ⟂ AC [30] & ∠DAB = ∠(AC-EF) [42] & AD ∥ BC [03] ⇒  ∠DAB = ∠(FC-ED) [44]
+038. ∠DAB = ∠(FC-ED) [44] & ∠(CE-AB) = ∠(AB-DE) [16] ⇒  ∠(AD-CF) = ∠(CE-AB) [45]
+039. ∠(AD-CF) = ∠(CE-AB) [45] & AD ∥ BC [03] & AB ∥ CD [02] ⇒  ∠FCB = ∠DCE [46]
+040. CE = CF [06] & CD = CB [37] & ∠FCB = ∠DCE [46] (SAS)⇒  BF = DE [47]
+041. ∠(DE-AB) = 1_PI/12 [14] & ∠(CE-AB) = 1_1PI/12 [15] (Angle chase)⇒  ∠DEC = 1_PI/6 [48]
+042. AB ⟂ BC [00] & ∠(DE-AB) = 1_PI/12 [14] & ∠BAC = ∠ACB [32] & EF ⟂ AC [30] (Angle chase)⇒  ∠FED = 1_PI/6 [49]
+043. ∠(BD-AC) = ∠(DE-CF) [40] & AC ⟂ DB [29] & EF ⟂ AC [30] ⇒  FC ⟂ ED [50]
+044. AD ⟂ BA [41] & FC ⟂ ED [50] ⇒  ∠(AD-CF) = ∠(AB-DE) [51]
+045. ∠(AD-CF) = ∠(AB-DE) [51] & AD ∥ BC [03] & AB ∥ CD [02] ⇒  ∠FCB = ∠EDC [52]
+046. ED = FC [39] & CD = CB [37] & ∠FCB = ∠EDC [52] (SAS)⇒  ∠(BF-CE) = ∠BCD [53]
+047. ∠DAB = ∠(EF-AC) [43] & AD ∥ BC [03] & ∠(BF-CE) = ∠BCD [53] & AB ∥ CD [02] ⇒  ∠(BF-EC) = ∠(FE-CA) [54]
+048. ∠(BF-EC) = ∠(FE-CA) [54] & ∠FEC = ∠(DE-AC) [31] ⇒  ∠BFE = ∠FED [55]
+049. ∠DEC = 1_PI/6 [48] & ∠FED = 1_PI/6 [49] & AC ⟂ DB [29] & EF ⟂ AC [30] & ∠BFE = ∠FED [55] ⇒  ∠BFE = ∠DEC [56]
+050. EC = EF [36] & BF = DE [47] & ∠BFE = ∠DEC [56] (SAS)⇒  DC = BE [57]
+051. AB = CD [10] & DC = BE [57] & BE = AE [22] ⇒  EA = AB
+==========================
+
+I0309 23:41:21.524046 139793490157568 alphageometry.py:204] Solution written to /home/tong_peng/onedrive_googie32u/agtest/ag.out2.

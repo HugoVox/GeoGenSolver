@@ -1,0 +1,188 @@
+++ BATCH_SIZE=32
+++ BEAM_SIZE=128
+++ DEPTH=8
+++ NWORKERS=8
+++ PROB_FILE=/home/tong_peng/onedrive_googie32u/agtest/myexamples.txt
+++ PROB=gaolian100-6
+++ MODEL=alphageometry
+++ DATA=/home/tong_peng/pyvenv/ag/ag_ckpt_vocab
+++ MELIAD_PATH=/home/tong_peng/pyvenv/ag/meliad_lib/meliad
+++ export PYTHONPATH=:/home/tong_peng/onedrive_googie32u/alphageometry:/home/tong_peng/pyvenv/ag:/home/tong_peng/pyvenv/ag/meliad_lib/meliad
+++ PYTHONPATH=:/home/tong_peng/onedrive_googie32u/alphageometry:/home/tong_peng/pyvenv/ag:/home/tong_peng/pyvenv/ag/meliad_lib/meliad
+++ DDAR_ARGS=(--defs_file=$AGDIR/defs.txt --rules_file=$AGDIR/rules.txt)
+++ SEARCH_ARGS=(--beam_size=$BEAM_SIZE --search_depth=$DEPTH)
+++ LM_ARGS=(--ckpt_path=$DATA --vocab_path=$DATA/geometry.757.model --gin_search_paths=$MELIAD_PATH/transformer/configs,$AGDIR --gin_file=base_htrans.gin --gin_file=size/medium_150M.gin --gin_file=options/positions_t5.gin --gin_file=options/lr_cosine_decay.gin --gin_file=options/seq_1024_nocache.gin --gin_file=geometry_150M_generate.gin --gin_param=DecoderOnlyLanguageModelGenerate.output_token_losses=True --gin_param=TransformerTaskConfig.batch_size=$BATCH_SIZE --gin_param=TransformerTaskConfig.sequence_length=128 --gin_param=Trainer.restore_state_variables=False)
+++ true ==========================================
+++ python -m alphageometry --alsologtostderr --problems_file=/home/tong_peng/onedrive_googie32u/agtest/myexamples.txt --problem_name=gaolian100-6 --mode=alphageometry --defs_file=/home/tong_peng/onedrive_googie32u/alphageometry/defs.txt --rules_file=/home/tong_peng/onedrive_googie32u/alphageometry/rules.txt --beam_size=128 --search_depth=8 --ckpt_path=/home/tong_peng/pyvenv/ag/ag_ckpt_vocab --vocab_path=/home/tong_peng/pyvenv/ag/ag_ckpt_vocab/geometry.757.model --gin_search_paths=/home/tong_peng/pyvenv/ag/meliad_lib/meliad/transformer/configs,/home/tong_peng/onedrive_googie32u/alphageometry --gin_file=base_htrans.gin --gin_file=size/medium_150M.gin --gin_file=options/positions_t5.gin --gin_file=options/lr_cosine_decay.gin --gin_file=options/seq_1024_nocache.gin --gin_file=geometry_150M_generate.gin --gin_param=DecoderOnlyLanguageModelGenerate.output_token_losses=True --gin_param=TransformerTaskConfig.batch_size=32 --gin_param=TransformerTaskConfig.sequence_length=128 --gin_param=Trainer.restore_state_variables=False --out_file=/home/tong_peng/onedrive_googie32u/agtest/ag.out --n_workers=8
+I0321 22:36:52.123446 125862060560384 graph.py:498] gaolian100-6
+I0321 22:36:52.123676 125862060560384 graph.py:499] a = free a; b = free b; c = on_circle c a b; d = on_circle d a b; e = lc_tangent e c a, lc_tangent e d a; f = foot f d a b; g = on_line g d f, on_line g e b; h = on_line h d f, on_line h c b ? cong d g g h
+I0321 22:36:56.809170 125862060560384 alphageometry.py:230] DD+AR failed to solve the problem.
+I0321 22:36:56.824296 125862060560384 alphageometry.py:522] Worker initializing. PID=2480
+I0321 22:36:56.834049 125862060560384 alphageometry.py:522] Worker initializing. PID=2481
+I0321 22:36:56.844219 125862060560384 alphageometry.py:522] Worker initializing. PID=2482
+I0321 22:36:56.854738 125862060560384 alphageometry.py:522] Worker initializing. PID=2483
+I0321 22:36:56.865157 125862060560384 alphageometry.py:522] Worker initializing. PID=2484
+I0321 22:36:56.877200 125862060560384 alphageometry.py:522] Worker initializing. PID=2545
+I0321 22:36:56.888153 125862060560384 alphageometry.py:522] Worker initializing. PID=2674
+I0321 22:36:56.901305 125862060560384 alphageometry.py:646] Depth 0. There are 1 nodes to expand:
+I0321 22:36:56.902293 125862060560384 alphageometry.py:650] {S} a : ; b : ; c : D a b a c 00 ; d : D a b a d 01 ; e : T a c c e 02 T a d d e 03 ; f : C a b f 04 T a b d f 05 ; g : C b e g 06 C d f g 07 ; h : C b c h 08 C d f h 09 ? D d g g h {F1} x00
+I0321 22:36:56.900544 125862060560384 alphageometry.py:522] Worker initializing. PID=2690
+I0321 22:37:46.476157 125862060560384 alphageometry.py:527] Worker 0: called, beam_queue size=1
+I0321 22:37:46.476386 125862060560384 alphageometry.py:530] Worker 0: Decoding from {S} a : ; b : ; c : D a b a c 00 ; d : D a b a d 01 ; e : T a c c e 02 T a d d e 03 ; f : C a b f 04 T a b d f 05 ; g : C b e g 06 C d f g 07 ; h : C b c h 08 C d f h 09 ? D d g g h {F1} x00
+I0321 22:52:43.807486 125862060560384 alphageometry.py:548] Worker 0: Translation: "i = on_bline i d c"
+
+I0321 22:52:43.807765 125862060560384 graph.py:498] 
+I0321 22:52:43.807870 125862060560384 graph.py:499] a = free a; b = free b; c = on_circle c a b; d = on_circle d a b; e = lc_tangent e c a, lc_tangent e d a; f = foot f d a b; g = on_line g d f, on_line g e b; h = on_line h d f, on_line h c b; i = on_bline i d c ? cong d g g h
+I0321 22:52:50.786823 125862060560384 alphageometry.py:230] DD+AR failed to solve the problem.
+I0321 22:52:50.787211 125862060560384 alphageometry.py:548] Worker 0: Translation: "i = on_circle i b d, on_circle i c d"
+
+I0321 22:52:50.787455 125862060560384 graph.py:498] 
+I0321 22:52:50.787554 125862060560384 graph.py:499] a = free a; b = free b; c = on_circle c a b; d = on_circle d a b; e = lc_tangent e c a, lc_tangent e d a; f = foot f d a b; g = on_line g d f, on_line g e b; h = on_line h d f, on_line h c b; i = on_circle i b d, on_circle i c d ? cong d g g h
+I0321 22:52:58.321355 125862060560384 alphageometry.py:230] DD+AR failed to solve the problem.
+I0321 22:52:58.321696 125862060560384 alphageometry.py:548] Worker 0: Translation: "i = on_circle i b c, on_circle i c b"
+
+I0321 22:52:58.321956 125862060560384 graph.py:498] 
+I0321 22:52:58.322064 125862060560384 graph.py:499] a = free a; b = free b; c = on_circle c a b; d = on_circle d a b; e = lc_tangent e c a, lc_tangent e d a; f = foot f d a b; g = on_line g d f, on_line g e b; h = on_line h d f, on_line h c b; i = on_circle i b c, on_circle i c b ? cong d g g h
+I0321 22:53:07.199563 125862060560384 alphageometry.py:230] DD+AR failed to solve the problem.
+I0321 22:53:07.199822 125862060560384 alphageometry.py:548] Worker 0: Translation: "i = on_circle i c e, on_circle i d e"
+
+I0321 22:53:07.200112 125862060560384 graph.py:498] 
+I0321 22:53:07.200218 125862060560384 graph.py:499] a = free a; b = free b; c = on_circle c a b; d = on_circle d a b; e = lc_tangent e c a, lc_tangent e d a; f = foot f d a b; g = on_line g d f, on_line g e b; h = on_line h d f, on_line h c b; i = on_circle i c e, on_circle i d e ? cong d g g h
+I0321 22:53:16.751102 125862060560384 alphageometry.py:230] DD+AR failed to solve the problem.
+I0321 22:53:16.751382 125862060560384 alphageometry.py:548] Worker 0: Translation: "i = on_line i b c, on_bline i c b"
+
+I0321 22:53:16.751604 125862060560384 graph.py:498] 
+I0321 22:53:16.751696 125862060560384 graph.py:499] a = free a; b = free b; c = on_circle c a b; d = on_circle d a b; e = lc_tangent e c a, lc_tangent e d a; f = foot f d a b; g = on_line g d f, on_line g e b; h = on_line h d f, on_line h c b; i = on_line i b c, on_bline i c b ? cong d g g h
+I0321 22:53:25.407969 125862060560384 alphageometry.py:230] DD+AR failed to solve the problem.
+I0321 22:53:25.408181 125862060560384 alphageometry.py:548] Worker 0: Translation: "i = on_circle i c f, on_circle i h f"
+
+I0321 22:53:25.408459 125862060560384 graph.py:498] 
+I0321 22:53:25.408561 125862060560384 graph.py:499] a = free a; b = free b; c = on_circle c a b; d = on_circle d a b; e = lc_tangent e c a, lc_tangent e d a; f = foot f d a b; g = on_line g d f, on_line g e b; h = on_line h d f, on_line h c b; i = on_circle i c f, on_circle i h f ? cong d g g h
+I0321 22:53:33.825636 125862060560384 alphageometry.py:230] DD+AR failed to solve the problem.
+I0321 22:53:33.825941 125862060560384 alphageometry.py:548] Worker 0: Translation: "i = on_circle i c b, on_circle i d b"
+
+I0321 22:53:33.826215 125862060560384 graph.py:498] 
+I0321 22:53:33.826322 125862060560384 graph.py:499] a = free a; b = free b; c = on_circle c a b; d = on_circle d a b; e = lc_tangent e c a, lc_tangent e d a; f = foot f d a b; g = on_line g d f, on_line g e b; h = on_line h d f, on_line h c b; i = on_circle i c b, on_circle i d b ? cong d g g h
+I0321 22:53:39.953584 125862060560384 alphageometry.py:230] DD+AR failed to solve the problem.
+I0321 22:53:39.953873 125862060560384 alphageometry.py:548] Worker 0: Translation: "i = eqdistance i h c e, eqdistance i c e h"
+
+I0321 22:53:39.954109 125862060560384 graph.py:498] 
+I0321 22:53:39.954210 125862060560384 graph.py:499] a = free a; b = free b; c = on_circle c a b; d = on_circle d a b; e = lc_tangent e c a, lc_tangent e d a; f = foot f d a b; g = on_line g d f, on_line g e b; h = on_line h d f, on_line h c b; i = eqdistance i h c e, eqdistance i c e h ? cong d g g h
+I0321 22:53:46.256042 125862060560384 alphageometry.py:230] DD+AR failed to solve the problem.
+I0321 22:53:46.256261 125862060560384 alphageometry.py:548] Worker 0: Translation: "i = on_bline i e c, on_bline i e d"
+
+I0321 22:53:46.256529 125862060560384 graph.py:498] 
+I0321 22:53:46.256639 125862060560384 graph.py:499] a = free a; b = free b; c = on_circle c a b; d = on_circle d a b; e = lc_tangent e c a, lc_tangent e d a; f = foot f d a b; g = on_line g d f, on_line g e b; h = on_line h d f, on_line h c b; i = on_bline i e c, on_bline i e d ? cong d g g h
+I0321 22:53:57.463943 125862060560384 alphageometry.py:230] DD+AR failed to solve the problem.
+I0321 22:53:57.464216 125862060560384 alphageometry.py:548] Worker 0: Translation: "i = on_line i b d, on_bline i d b"
+
+I0321 22:53:57.464519 125862060560384 graph.py:498] 
+I0321 22:53:57.464628 125862060560384 graph.py:499] a = free a; b = free b; c = on_circle c a b; d = on_circle d a b; e = lc_tangent e c a, lc_tangent e d a; f = foot f d a b; g = on_line g d f, on_line g e b; h = on_line h d f, on_line h c b; i = on_line i b d, on_bline i d b ? cong d g g h
+I0321 22:54:05.113608 125862060560384 alphageometry.py:230] DD+AR failed to solve the problem.
+I0321 22:54:05.113964 125862060560384 alphageometry.py:548] Worker 0: Translation: "i = on_circle i c e, on_circle i h e"
+
+I0321 22:54:05.114330 125862060560384 graph.py:498] 
+I0321 22:54:05.114442 125862060560384 graph.py:499] a = free a; b = free b; c = on_circle c a b; d = on_circle d a b; e = lc_tangent e c a, lc_tangent e d a; f = foot f d a b; g = on_line g d f, on_line g e b; h = on_line h d f, on_line h c b; i = on_circle i c e, on_circle i h e ? cong d g g h
+I0321 22:54:16.178056 125862060560384 alphageometry.py:230] DD+AR failed to solve the problem.
+I0321 22:54:16.178323 125862060560384 alphageometry.py:548] Worker 0: Translation: "i = on_bline i d c, on_bline i h c"
+
+I0321 22:54:16.178557 125862060560384 graph.py:498] 
+I0321 22:54:16.178667 125862060560384 graph.py:499] a = free a; b = free b; c = on_circle c a b; d = on_circle d a b; e = lc_tangent e c a, lc_tangent e d a; f = foot f d a b; g = on_line g d f, on_line g e b; h = on_line h d f, on_line h c b; i = on_bline i d c, on_bline i h c ? cong d g g h
+I0321 22:54:29.138074 125862060560384 alphageometry.py:230] DD+AR failed to solve the problem.
+I0321 22:54:29.138308 125862060560384 alphageometry.py:548] Worker 0: Translation: "i = on_bline i d c, on_bline i e c"
+
+I0321 22:54:29.138582 125862060560384 graph.py:498] 
+I0321 22:54:29.138697 125862060560384 graph.py:499] a = free a; b = free b; c = on_circle c a b; d = on_circle d a b; e = lc_tangent e c a, lc_tangent e d a; f = foot f d a b; g = on_line g d f, on_line g e b; h = on_line h d f, on_line h c b; i = on_bline i d c, on_bline i e c ? cong d g g h
+I0321 22:54:40.013552 125862060560384 alphageometry.py:230] DD+AR failed to solve the problem.
+I0321 22:54:40.013882 125862060560384 alphageometry.py:548] Worker 0: Translation: "i = on_circle i c d, on_circle i d c"
+
+I0321 22:54:40.014126 125862060560384 graph.py:498] 
+I0321 22:54:40.014218 125862060560384 graph.py:499] a = free a; b = free b; c = on_circle c a b; d = on_circle d a b; e = lc_tangent e c a, lc_tangent e d a; f = foot f d a b; g = on_line g d f, on_line g e b; h = on_line h d f, on_line h c b; i = on_circle i c d, on_circle i d c ? cong d g g h
+I0321 22:54:48.873232 125862060560384 alphageometry.py:230] DD+AR failed to solve the problem.
+I0321 22:54:48.873641 125862060560384 alphageometry.py:548] Worker 0: Translation: "i = on_line i a e, on_bline i e a"
+
+I0321 22:54:48.874085 125862060560384 graph.py:498] 
+I0321 22:54:48.874257 125862060560384 graph.py:499] a = free a; b = free b; c = on_circle c a b; d = on_circle d a b; e = lc_tangent e c a, lc_tangent e d a; f = foot f d a b; g = on_line g d f, on_line g e b; h = on_line h d f, on_line h c b; i = on_line i a e, on_bline i e a ? cong d g g h
+I0321 22:54:58.874700 125862060560384 alphageometry.py:230] DD+AR failed to solve the problem.
+I0321 22:54:58.875120 125862060560384 alphageometry.py:548] Worker 0: Translation: "i = on_circle i c f, on_circle i e f"
+
+I0321 22:54:58.875473 125862060560384 graph.py:498] 
+I0321 22:54:58.875631 125862060560384 graph.py:499] a = free a; b = free b; c = on_circle c a b; d = on_circle d a b; e = lc_tangent e c a, lc_tangent e d a; f = foot f d a b; g = on_line g d f, on_line g e b; h = on_line h d f, on_line h c b; i = on_circle i c f, on_circle i e f ? cong d g g h
+I0321 22:55:05.812197 125862060560384 alphageometry.py:230] DD+AR failed to solve the problem.
+I0321 22:55:05.812473 125862060560384 alphageometry.py:548] Worker 0: Translation: "i = on_line i c d, on_bline i d c"
+
+I0321 22:55:05.812747 125862060560384 graph.py:498] 
+I0321 22:55:05.812847 125862060560384 graph.py:499] a = free a; b = free b; c = on_circle c a b; d = on_circle d a b; e = lc_tangent e c a, lc_tangent e d a; f = foot f d a b; g = on_line g d f, on_line g e b; h = on_line h d f, on_line h c b; i = on_line i c d, on_bline i d c ? cong d g g h
+I0321 22:55:30.485164 125862060560384 alphageometry.py:200] 
+==========================
+ * From theorem premises:
+A B C D E F G H : Points
+AC = AB [00]
+AD = AB [01]
+DE ⟂ AD [02]
+CE ⟂ AC [03]
+DF ⟂ AB [04]
+D,G,F are collinear [05]
+B,G,E are collinear [06]
+B,H,C are collinear [07]
+H,D,F are collinear [08]
+
+ * Auxiliary Constructions:
+I : Points
+ID = IC [09]
+D,C,I are collinear [10]
+
+ * Proof steps:
+001. CA = BA [00] & DI = CI [09] ⇒  CA:DI = CA:DI [11]
+002. AD = AB [01] & AC = AB [00] ⇒  AC = AD [12]
+003. AD = AB [01] & AC = AB [00] ⇒  A is the circumcenter of \Delta CBD [13]
+004. AC = AD [12] & ID = IC [09] ⇒  CD ⟂ AI [14]
+005. AC = AD [12] & ID = IC [09] ⇒  ID:IC = AD:AC [15]
+006. D,C,I are collinear [10] & CD ⟂ AI [14] & DE ⟂ AD [02] ⇒  ∠EDA = ∠CIA [16]
+007. D,C,I are collinear [10] & ID = IC [09] ⇒  I is midpoint of CD [17]
+008. A is the circumcenter of \Delta CBD [13] & I is midpoint of CD [17] ⇒  ∠DBC = ∠IAC [18]
+009. A is the circumcenter of \Delta CBD [13] & CE ⟂ AC [03] ⇒  ∠DCE = ∠DBC [19]
+010. CE ⟂ AC [03] & DE ⟂ AD [02] ⇒  ∠EDA = ∠ECA [20]
+011. ∠EDA = ∠ECA [20] ⇒  D,C,E,A are concyclic [21]
+012. D,C,E,A are concyclic [21] ⇒  ∠DCE = ∠DAE [22]
+013. D,C,E,A are concyclic [21] ⇒  ∠EDC = ∠EAC [23]
+014. ∠DBC = ∠IAC [18] & ∠DCE = ∠DBC [19] & ∠DCE = ∠DAE [22] ⇒  ∠DAE = ∠IAC [24]
+015. ∠EDA = ∠CIA [16] & ∠DAE = ∠IAC [24] (Similar Triangles)⇒  ED:EA = CI:CA [25]
+016. ∠EDA = ∠CIA [16] & ∠DAE = ∠IAC [24] (Similar Triangles)⇒  AE:AD = AC:AI [26]
+017. A is the circumcenter of \Delta CBD [13] & DE ⟂ AD [02] ⇒  ∠CDE = ∠CBD [27]
+018. ∠ECD = ∠CBD [19] & ∠CDE = ∠CBD [27] ⇒  ∠CDE = ∠ECD [28]
+019. ∠CDE = ∠ECD [28] ⇒  EC = ED [29]
+020. ED:EA = CI:CA [25] & AC = AB [00] & DI = CI [09] & CE = DE [29] ⇒  DI:CA = CE:EA [30]
+021. AE:AD = AC:AI [26] & AD = AB [01] & AC = AB [00] ⇒  EA:BA = BA:IA [31]
+022. AC = AD [12] & EC = ED [29] ⇒  CD ⟂ AE [32]
+023. CD ⟂ AI [14] & CE ⟂ AC [03] ⇒  ∠ECA = ∠(DC-IA) [33]
+024. ∠ECA = ∠(DC-IA) [33] & ∠CDE = ∠ECD [28] ⇒  ∠IAC = ∠EDC [34]
+025. ∠EDC = ∠EAC [23] & ∠IAC = ∠EDC [34] ⇒  ∠IAC = ∠EAC [35]
+026. ∠IAC = ∠EAC [35] ⇒  IA ∥ EA [36]
+027. CD ⟂ AE [32] & CD ⟂ AI [14] & AI ∥ AE [36] ⇒  ∠BAI = ∠BAE [37]
+028. EA:BA = BA:IA [31] & ∠BAI = ∠BAE [37] (Similar Triangles)⇒  BA:BI = EA:BE [38]
+029. EA:BA = BA:IA [31] & ∠BAI = ∠BAE [37] (Similar Triangles)⇒  ∠ABI = ∠BEA [39]
+030. BA:BI = EA:BE [38] & CA = BA [00] ⇒  CA:BI = EA:BE [40]
+031. DI:CA = CE:EA [30] & CA:BI = EA:BE [40] ⇒  DI:CE = BI:BE [41]
+032. AD = AB [01] ⇒  ∠ABD = ∠BDA [42]
+033. DE ⟂ AD [02] & DF ⟂ AB [04] & ∠ABD = ∠BDA [42] (Angle chase)⇒  ∠BDE = ∠FDB [43]
+034. D,G,F are collinear [05] & ∠FDB = ∠BDE [43] ⇒  ∠GDB = ∠BDE [44]
+035. ∠GDB = ∠BDE [44] & B,G,E are collinear [06] ⇒  BE:BG = DE:DG [45]
+036. BE:BG = DE:DG [45] & CE = DE [29] ⇒  BE:BG = CE:DG [46]
+037. BI:BE = DI:CE [41] & BE:BG = CE:DG [46] ⇒  BI:BG = DI:DG [47]
+038. AC = AB [00] ⇒  ∠ACB = ∠CBA [48]
+039. AC = AD [12] ⇒  ∠ACD = ∠CDA [49]
+040. DF ⟂ AB [04] & ∠ACB = ∠CBA [48] & ∠ACD = ∠CDA [49] & ∠ABD = ∠BDA [42] (Angle chase)⇒  ∠(BC-DF) = ∠CDB [50]
+041. D,C,I are collinear [10] & B,H,C are collinear [07] & H,D,F are collinear [08] & D,G,F are collinear [05] & ∠CDB = ∠(BC-DF) [50] ⇒  ∠IDB = ∠BHG [51]
+042. ID:IC = AD:AC [15] & D,C,I are collinear [10] ⇒  ∠DAI = ∠IAC [52]
+043. ∠ABI = ∠BEA [39] & AI ∥ AE [36] ⇒  ∠ABI = ∠(BE-AI) [53]
+044. ∠DAI = ∠IAC [52] & ∠ACB = ∠CBA [48] & ∠ABD = ∠BDA [42] & ∠ABI = ∠(BE-AI) [53] (Angle chase)⇒  ∠CBE = ∠IBD [54]
+045. B,H,C are collinear [07] & B,G,E are collinear [06] & ∠IBD = ∠CBE [54] ⇒  ∠IBD = ∠HBG [55]
+046. ∠IDB = ∠BHG [51] & ∠IBD = ∠HBG [55] (Similar Triangles)⇒  ID:GH = IB:GB [56]
+047. BI:BG = DI:DG [47] & ID = IC [09] & ID:GH = IB:GB [56] ⇒  DI:HG = DI:DG [57]
+048. CA:DI = CA:DI [11] & DI:HG = DI:DG [57] ⇒  HG = DG
+==========================
+
+I0321 22:55:30.485701 125862060560384 alphageometry.py:204] Solution written to /home/tong_peng/onedrive_googie32u/agtest/ag.out.
+I0321 23:01:11.216471 125862060560384 alphageometry.py:565] Worker 0: Solved.
+I0321 23:01:11.217892 125862060560384 alphageometry.py:670] Worker 0 returned. Solved=True

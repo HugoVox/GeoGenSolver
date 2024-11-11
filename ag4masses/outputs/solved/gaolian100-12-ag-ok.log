@@ -1,0 +1,717 @@
+++ BATCH_SIZE=24
+++ BEAM_SIZE=64
+++ DEPTH=8
+++ NWORKERS=8
+++ PROB_FILE=/home/tong_peng/onedrive_googie32u/agtest/myexamples.txt
+++ PROB=gaolian100-12
+++ MODEL=alphageometry
+++ DATA=/home/tong_peng/pyvenv/ag/ag_ckpt_vocab
+++ MELIAD_PATH=/home/tong_peng/pyvenv/ag/meliad_lib/meliad
+++ export PYTHONPATH=:/home/tong_peng/onedrive_googie32u/alphageometry:/home/tong_peng/pyvenv/ag:/home/tong_peng/pyvenv/ag/meliad_lib/meliad
+++ PYTHONPATH=:/home/tong_peng/onedrive_googie32u/alphageometry:/home/tong_peng/pyvenv/ag:/home/tong_peng/pyvenv/ag/meliad_lib/meliad
+++ DDAR_ARGS=(--defs_file=$AGDIR/defs.txt --rules_file=$AGDIR/rules.txt)
+++ SEARCH_ARGS=(--beam_size=$BEAM_SIZE --search_depth=$DEPTH)
+++ LM_ARGS=(--ckpt_path=$DATA --vocab_path=$DATA/geometry.757.model --gin_search_paths=$MELIAD_PATH/transformer/configs,$AGDIR --gin_file=base_htrans.gin --gin_file=size/medium_150M.gin --gin_file=options/positions_t5.gin --gin_file=options/lr_cosine_decay.gin --gin_file=options/seq_1024_nocache.gin --gin_file=geometry_150M_generate.gin --gin_param=DecoderOnlyLanguageModelGenerate.output_token_losses=True --gin_param=TransformerTaskConfig.batch_size=$BATCH_SIZE --gin_param=TransformerTaskConfig.sequence_length=128 --gin_param=Trainer.restore_state_variables=False)
+++ true ==========================================
+++ python -m alphageometry --alsologtostderr --problems_file=/home/tong_peng/onedrive_googie32u/agtest/myexamples.txt --problem_name=gaolian100-12 --mode=alphageometry --defs_file=/home/tong_peng/onedrive_googie32u/alphageometry/defs.txt --rules_file=/home/tong_peng/onedrive_googie32u/alphageometry/rules.txt --beam_size=64 --search_depth=8 --ckpt_path=/home/tong_peng/pyvenv/ag/ag_ckpt_vocab --vocab_path=/home/tong_peng/pyvenv/ag/ag_ckpt_vocab/geometry.757.model --gin_search_paths=/home/tong_peng/pyvenv/ag/meliad_lib/meliad/transformer/configs,/home/tong_peng/onedrive_googie32u/alphageometry --gin_file=base_htrans.gin --gin_file=size/medium_150M.gin --gin_file=options/positions_t5.gin --gin_file=options/lr_cosine_decay.gin --gin_file=options/seq_1024_nocache.gin --gin_file=geometry_150M_generate.gin --gin_param=DecoderOnlyLanguageModelGenerate.output_token_losses=True --gin_param=TransformerTaskConfig.batch_size=24 --gin_param=TransformerTaskConfig.sequence_length=128 --gin_param=Trainer.restore_state_variables=False --out_file=/home/tong_peng/onedrive_googie32u/agtest/ag.out --n_workers=8
+I0406 21:02:04.637060 135279079972864 graph.py:498] gaolian100-12
+I0406 21:02:04.637331 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f ? cong c g c h
+I0406 21:02:08.278219 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:02:08.293032 135279079972864 alphageometry.py:522] Worker initializing. PID=2866
+I0406 21:02:08.304146 135279079972864 alphageometry.py:522] Worker initializing. PID=2867
+I0406 21:02:08.313952 135279079972864 alphageometry.py:522] Worker initializing. PID=2868
+I0406 21:02:08.325267 135279079972864 alphageometry.py:522] Worker initializing. PID=2869
+I0406 21:02:08.336427 135279079972864 alphageometry.py:522] Worker initializing. PID=2900
+I0406 21:02:08.347604 135279079972864 alphageometry.py:522] Worker initializing. PID=2980
+I0406 21:02:08.358955 135279079972864 alphageometry.py:522] Worker initializing. PID=3061
+I0406 21:02:08.373842 135279079972864 alphageometry.py:651] Depth 0. There are 1 nodes to expand:
+I0406 21:02:08.375748 135279079972864 alphageometry.py:655] {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00
+I0406 21:02:08.373595 135279079972864 alphageometry.py:522] Worker initializing. PID=3092
+I0406 21:02:49.498787 135279079972864 alphageometry.py:527] Worker PID=2867 called for beam search node 0
+I0406 21:02:49.499006 135279079972864 alphageometry.py:530] Worker PID=2867: Decoding from {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00
+I0406 21:13:56.945881 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "i = on_circle i a g, on_tline i a a g"
+I0406 21:13:56.946334 135279079972864 graph.py:498] 
+I0406 21:13:56.946453 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i a g, on_tline i a a g ? cong c g c h
+I0406 21:14:03.930609 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:14:03.930845 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "i = on_tline i g a g"
+I0406 21:14:03.931167 135279079972864 graph.py:498] 
+I0406 21:14:03.931272 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i g a g ? cong c g c h
+I0406 21:14:08.306693 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:14:08.306905 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "i = eqdistance i f b d, eqdistance i b d f"
+I0406 21:14:08.307243 135279079972864 graph.py:498] 
+I0406 21:14:08.307356 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = eqdistance i f b d, eqdistance i b d f ? cong c g c h
+I0406 21:14:16.438935 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:14:16.439152 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "i = on_tline i g c g"
+I0406 21:14:16.439466 135279079972864 graph.py:498] 
+I0406 21:14:16.439598 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i g c g ? cong c g c h
+I0406 21:14:20.761389 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:14:20.761627 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "i = on_circle i d b, on_tline i d b d"
+I0406 21:14:20.761930 135279079972864 graph.py:498] 
+I0406 21:14:20.762036 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i d b, on_tline i d b d ? cong c g c h
+I0406 21:14:30.414432 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:14:30.414695 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "i = on_circle i a g"
+I0406 21:14:30.415171 135279079972864 graph.py:498] 
+I0406 21:14:30.415279 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i a g ? cong c g c h
+I0406 21:14:34.602563 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:14:34.602819 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "i = on_tline i a a d"
+I0406 21:14:34.603156 135279079972864 graph.py:498] 
+I0406 21:14:34.603270 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i a a d ? cong c g c h
+I0406 21:14:38.816597 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:14:38.816833 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "i = eqdistance i e b d, on_pline i e b d"
+I0406 21:14:38.817201 135279079972864 graph.py:498] 
+I0406 21:14:38.817309 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = eqdistance i e b d, on_pline i e b d ? cong c g c h
+I0406 21:14:44.272838 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:14:44.273066 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "i = on_tline i f a d"
+I0406 21:14:44.273362 135279079972864 graph.py:498] 
+I0406 21:14:44.273469 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i f a d ? cong c g c h
+I0406 21:14:48.564496 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:14:48.564748 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "i = on_circle i e b, on_tline i e b e"
+I0406 21:14:48.565085 135279079972864 graph.py:498] 
+I0406 21:14:48.565196 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i e b, on_tline i e b e ? cong c g c h
+I0406 21:14:57.972463 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:14:57.972725 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "i = on_tline i c a d"
+I0406 21:14:57.973040 135279079972864 graph.py:498] 
+I0406 21:14:57.973146 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i c a d ? cong c g c h
+I0406 21:15:04.119190 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:15:04.119508 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "i = eqdistance i e b d, eqdistance i b d e"
+I0406 21:15:04.119842 135279079972864 graph.py:498] 
+I0406 21:15:04.119958 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = eqdistance i e b d, eqdistance i b d e ? cong c g c h
+I0406 21:15:09.003309 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:15:09.003546 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "i = on_circle i d b, on_tline i b a d"
+I0406 21:15:09.003843 135279079972864 graph.py:498] 
+I0406 21:15:09.003956 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i d b, on_tline i b a d ? cong c g c h
+I0406 21:15:16.884920 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:15:16.885142 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "i = on_tline i f a d, on_tline i a c f"
+I0406 21:15:16.885437 135279079972864 graph.py:498] 
+I0406 21:15:16.885537 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i f a d, on_tline i a c f ? cong c g c h
+I0406 21:15:22.199810 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:15:22.200044 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "i = on_tline i d a d"
+I0406 21:15:22.200363 135279079972864 graph.py:498] 
+I0406 21:15:22.200474 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i d a d ? cong c g c h
+I0406 21:15:27.122571 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:15:27.122815 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "i = on_tline i f c g"
+I0406 21:15:27.123185 135279079972864 graph.py:498] 
+I0406 21:15:27.123303 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i f c g ? cong c g c h
+I0406 21:15:31.335536 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:15:31.335802 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "i = eqdistance i f b d, eqdistance i d b f"
+I0406 21:15:31.336160 135279079972864 graph.py:498] 
+I0406 21:15:31.336274 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = eqdistance i f b d, eqdistance i d b f ? cong c g c h
+I0406 21:15:36.526077 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:15:36.526310 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "i = on_circle i a g, on_circle i d g"
+I0406 21:15:36.526664 135279079972864 graph.py:498] 
+I0406 21:15:36.526772 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i a g, on_circle i d g ? cong c g c h
+I0406 21:15:48.296082 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:15:48.296318 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "i = on_tline i d c d"
+I0406 21:15:48.296624 135279079972864 graph.py:498] 
+I0406 21:15:48.296736 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i d c d ? cong c g c h
+I0406 21:15:52.434981 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:15:52.435211 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "i = on_tline i f b d, on_tline i b d f"
+I0406 21:15:52.435536 135279079972864 graph.py:498] 
+I0406 21:15:52.435616 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i f b d, on_tline i b d f ? cong c g c h
+I0406 21:15:57.832671 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:15:57.832907 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "i = on_bline i e a, on_pline i a c e"
+I0406 21:15:57.833286 135279079972864 graph.py:498] 
+I0406 21:15:57.833390 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_bline i e a, on_pline i a c e ? cong c g c h
+I0406 21:16:09.423190 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:16:09.423428 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "i = on_tline i a a g"
+I0406 21:16:09.423742 135279079972864 graph.py:498] 
+I0406 21:16:09.423850 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i a a g ? cong c g c h
+I0406 21:16:13.777367 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:16:13.777575 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "i = on_tline i e a e"
+I0406 21:16:13.777849 135279079972864 graph.py:498] 
+I0406 21:16:13.777960 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i e a e ? cong c g c h
+I0406 21:16:18.341279 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:16:18.341541 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "i = on_tline i e c g"
+I0406 21:16:18.341862 135279079972864 graph.py:498] 
+I0406 21:16:18.341978 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i e c g ? cong c g c h
+I0406 21:16:22.745383 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:16:22.745531 135279079972864 alphageometry.py:587] Worker PID=2867 beam search node 0: returning
+I0406 21:16:24.331641 135279079972864 alphageometry.py:651] Depth 1. There are 24 nodes to expand:
+I0406 21:16:24.331839 135279079972864 alphageometry.py:655] {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : D a g a i 10 T a g a i 11 ; x00
+I0406 21:16:24.331892 135279079972864 alphageometry.py:655] {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : T a g g i 10 ; x00
+I0406 21:16:24.331933 135279079972864 alphageometry.py:655] {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : D b d f i 10 D b i d f 11 ; x00
+I0406 21:16:24.331971 135279079972864 alphageometry.py:655] {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : T c g g i 10 ; x00
+I0406 21:16:24.332006 135279079972864 alphageometry.py:655] {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : D b d d i 10 T b d d i 11 ; x00
+I0406 21:16:24.332041 135279079972864 alphageometry.py:655] {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : D a g a i 10 ; x00
+I0406 21:16:24.332075 135279079972864 alphageometry.py:655] {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : T a d a i 10 ; x00
+I0406 21:16:24.332113 135279079972864 alphageometry.py:655] {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : D b d e i 10 P b d e i 11 ; x00
+I0406 21:16:24.332154 135279079972864 alphageometry.py:655] {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : T a d f i 10 ; x00
+I0406 21:16:24.332188 135279079972864 alphageometry.py:655] {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : D b e e i 10 T b e e i 11 ; x00
+I0406 21:16:24.332222 135279079972864 alphageometry.py:655] {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : T a d c i 10 ; x00
+I0406 21:16:24.332256 135279079972864 alphageometry.py:655] {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : D b d e i 10 D b i d e 11 ; x00
+I0406 21:16:24.332289 135279079972864 alphageometry.py:655] {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : D b d d i 10 T a d b i 11 ; x00
+I0406 21:16:24.332323 135279079972864 alphageometry.py:655] {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : T a d f i 10 T a i c f 11 ; x00
+I0406 21:16:24.332356 135279079972864 alphageometry.py:655] {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : T a d d i 10 ; x00
+I0406 21:16:24.332393 135279079972864 alphageometry.py:655] {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : T c g f i 10 ; x00
+I0406 21:16:24.332427 135279079972864 alphageometry.py:655] {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : D b d f i 10 D b f d i 11 ; x00
+I0406 21:16:24.332461 135279079972864 alphageometry.py:655] {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : D a g a i 10 D d g d i 11 ; x00
+I0406 21:16:24.332494 135279079972864 alphageometry.py:655] {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : T c d d i 10 ; x00
+I0406 21:16:24.332528 135279079972864 alphageometry.py:655] {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : T b d f i 10 T b i d f 11 ; x00
+I0406 21:16:24.332560 135279079972864 alphageometry.py:655] {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : D a i e i 10 P a i c e 11 ; x00
+I0406 21:16:24.332593 135279079972864 alphageometry.py:655] {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : T a g a i 10 ; x00
+I0406 21:16:24.332636 135279079972864 alphageometry.py:655] {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : T a e e i 10 ; x00
+I0406 21:16:24.332669 135279079972864 alphageometry.py:655] {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : T c g e i 10 ; x00
+I0406 21:16:24.343865 135279079972864 alphageometry.py:527] Worker PID=2869 called for beam search node 0
+I0406 21:16:24.344102 135279079972864 alphageometry.py:530] Worker PID=2869: Decoding from {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : D a g a i 10 T a g a i 11 ; x00
+I0406 21:16:24.349621 135279079972864 alphageometry.py:527] Worker PID=2980 called for beam search node 1
+I0406 21:16:24.349802 135279079972864 alphageometry.py:530] Worker PID=2980: Decoding from {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : T a g g i 10 ; x00
+I0406 21:16:24.361777 135279079972864 alphageometry.py:527] Worker PID=3092 called for beam search node 2
+I0406 21:16:24.362129 135279079972864 alphageometry.py:530] Worker PID=3092: Decoding from {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : D b d f i 10 D b i d f 11 ; x00
+I0406 21:16:24.367914 135279079972864 alphageometry.py:527] Worker PID=2900 called for beam search node 3
+I0406 21:16:24.368237 135279079972864 alphageometry.py:530] Worker PID=2900: Decoding from {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : T c g g i 10 ; x00
+I0406 21:16:24.377397 135279079972864 alphageometry.py:527] Worker PID=3061 called for beam search node 4
+I0406 21:16:24.377711 135279079972864 alphageometry.py:530] Worker PID=3061: Decoding from {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : D b d d i 10 T b d d i 11 ; x00
+I0406 21:16:24.384681 135279079972864 alphageometry.py:527] Worker PID=2868 called for beam search node 5
+I0406 21:16:24.385004 135279079972864 alphageometry.py:530] Worker PID=2868: Decoding from {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : D a g a i 10 ; x00
+I0406 21:16:24.389691 135279079972864 alphageometry.py:527] Worker PID=2866 called for beam search node 6
+I0406 21:16:24.390028 135279079972864 alphageometry.py:530] Worker PID=2866: Decoding from {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : T a d a i 10 ; x00
+I0406 21:16:24.399608 135279079972864 alphageometry.py:527] Worker PID=2867 called for beam search node 7
+I0406 21:16:24.399883 135279079972864 alphageometry.py:530] Worker PID=2867: Decoding from {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : D b d e i 10 P b d e i 11 ; x00
+I0406 21:34:44.569499 135279079972864 alphageometry.py:549] Worker PID=2866: Translation: "j = on_tline j g c g"
+I0406 21:34:44.570352 135279079972864 graph.py:498] 
+I0406 21:34:44.570582 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i a a d; j = on_tline j g c g ? cong c g c h
+I0406 21:34:58.049735 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:34:58.050385 135279079972864 alphageometry.py:549] Worker PID=2866: Translation: "j = on_tline j f c g"
+I0406 21:34:58.051663 135279079972864 graph.py:498] 
+I0406 21:34:58.052101 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i a a d; j = on_tline j f c g ? cong c g c h
+I0406 21:35:04.055794 135279079972864 alphageometry.py:549] Worker PID=2980: Translation: "j = on_line j d f, on_bline j f d"
+I0406 21:35:04.056796 135279079972864 graph.py:498] 
+I0406 21:35:04.057057 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i g a g; j = on_line j d f, on_bline j f d ? cong c g c h
+I0406 21:35:10.207267 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:35:10.207506 135279079972864 alphageometry.py:549] Worker PID=2866: Translation: "j = on_tline j g a g"
+I0406 21:35:10.207924 135279079972864 graph.py:498] 
+I0406 21:35:10.208041 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i a a d; j = on_tline j g a g ? cong c g c h
+I0406 21:35:18.224543 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:35:18.224733 135279079972864 alphageometry.py:549] Worker PID=2980: Translation: "j = on_line j c d, on_circle j c d"
+I0406 21:35:18.225127 135279079972864 graph.py:498] 
+I0406 21:35:18.225236 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i g a g; j = on_line j c d, on_circle j c d ? cong c g c h
+I0406 21:35:21.336542 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:35:21.336846 135279079972864 alphageometry.py:549] Worker PID=2866: Translation: "j = on_tline j e b e"
+I0406 21:35:21.339354 135279079972864 graph.py:498] 
+I0406 21:35:21.339623 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i a a d; j = on_tline j e b e ? cong c g c h
+I0406 21:35:35.422725 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:35:35.423094 135279079972864 alphageometry.py:549] Worker PID=2866: Translation: "j = on_tline j f f g"
+I0406 21:35:35.423927 135279079972864 graph.py:498] 
+I0406 21:35:35.424194 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i a a d; j = on_tline j f f g ? cong c g c h
+I0406 21:35:47.282572 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:35:47.283175 135279079972864 alphageometry.py:549] Worker PID=2866: Translation: "j = on_tline j e a e"
+I0406 21:35:47.284379 135279079972864 graph.py:498] 
+I0406 21:35:47.284843 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i a a d; j = on_tline j e a e ? cong c g c h
+I0406 21:35:47.961218 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:35:47.961620 135279079972864 alphageometry.py:549] Worker PID=2980: Translation: "j = on_line j c d, on_bline j d c"
+I0406 21:35:47.962604 135279079972864 graph.py:498] 
+I0406 21:35:47.962907 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i g a g; j = on_line j c d, on_bline j d c ? cong c g c h
+I0406 21:35:54.152234 135279079972864 alphageometry.py:549] Worker PID=2900: Translation: "j = on_circle j i g, on_pline j i c g"
+I0406 21:35:54.152926 135279079972864 graph.py:498] 
+I0406 21:35:54.153108 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i g c g; j = on_circle j i g, on_pline j i c g ? cong c g c h
+I0406 21:35:58.792886 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:35:58.793093 135279079972864 alphageometry.py:549] Worker PID=2980: Translation: "j = on_line j d e, on_bline j e d"
+I0406 21:35:58.793512 135279079972864 graph.py:498] 
+I0406 21:35:58.793627 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i g a g; j = on_line j d e, on_bline j e d ? cong c g c h
+I0406 21:35:59.969265 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:35:59.969680 135279079972864 alphageometry.py:549] Worker PID=2866: Translation: "j = on_tline j f c h"
+I0406 21:35:59.970638 135279079972864 graph.py:498] 
+I0406 21:35:59.970931 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i a a d; j = on_tline j f c h ? cong c g c h
+I0406 21:36:07.810665 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:36:07.811211 135279079972864 alphageometry.py:549] Worker PID=2900: Translation: "j = on_circle j a g"
+I0406 21:36:07.812321 135279079972864 graph.py:498] 
+I0406 21:36:07.812585 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i g c g; j = on_circle j a g ? cong c g c h
+I0406 21:36:09.361270 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "j = on_line j d f, on_bline j f d"
+I0406 21:36:09.361698 135279079972864 graph.py:498] 
+I0406 21:36:09.361810 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = eqdistance i e b d, on_pline i e b d; j = on_line j d f, on_bline j f d ? cong c g c h
+I0406 21:36:09.970334 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:36:09.970793 135279079972864 alphageometry.py:549] Worker PID=2866: Translation: "j = on_tline j f b d, on_tline j d b f"
+I0406 21:36:09.971568 135279079972864 graph.py:498] 
+I0406 21:36:09.971765 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i a a d; j = on_tline j f b d, on_tline j d b f ? cong c g c h
+I0406 21:36:16.590908 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:36:16.591608 135279079972864 alphageometry.py:549] Worker PID=2900: Translation: "j = eqdistance j e b d, on_pline j e b d"
+I0406 21:36:16.592999 135279079972864 graph.py:498] 
+I0406 21:36:16.593404 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i g c g; j = eqdistance j e b d, on_pline j e b d ? cong c g c h
+I0406 21:36:20.248831 135279079972864 alphageometry.py:201] 
+==========================
+ * From theorem premises:
+A B C D E F G H : Points
+CA = CB [00]
+A,C,B are collinear [01]
+CD = CA [02]
+CE = CA [03]
+D,F,E are collinear [04]
+BF ⟂ AB [05]
+A,G,E are collinear [06]
+C,G,F are collinear [07]
+D,A,H are collinear [08]
+H,C,F are collinear [09]
+
+ * Auxiliary Constructions:
+J : Points
+D,J,E are collinear [10]
+JE = JD [11]
+
+ * Proof steps:
+001. CE = CA [03] & CA = CB [00] ⇒  AB:CB = AB:CB [12]
+002. CD = CA [02] & CE = CA [03] & CA = CB [00] ⇒  D,A,B,E are concyclic [13]
+003. D,A,B,E are concyclic [13] ⇒  ∠BAD = ∠BED [14]
+004. D,A,B,E are concyclic [13] ⇒  ∠BDE = ∠BAE [15]
+005. D,J,E are collinear [10] & A,C,B are collinear [01] & D,A,H are collinear [08] & ∠BED = ∠BAD [14] ⇒  ∠BEJ = ∠CAH [16]
+006. CE = CA [03] & CD = CA [02] ⇒  CD = CE [17]
+007. CD = CE [17] & JE = JD [11] ⇒  DE ⟂ CJ [18]
+008. D,J,E are collinear [10] & D,F,E are collinear [04] & A,C,B are collinear [01] & BF ⟂ AB [05] & DE ⟂ CJ [18] ⇒  ∠FJC = ∠FBC [19]
+009. ∠FJC = ∠FBC [19] ⇒  C,B,F,J are concyclic [20]
+010. C,B,F,J are concyclic [20] ⇒  ∠CBJ = ∠CFJ [21]
+011. D,J,E are collinear [10] & A,C,B are collinear [01] & H,C,F are collinear [09] & ∠CBJ = ∠CFJ [21] & D,F,E are collinear [04] ⇒  ∠BJE = ∠ACH [22]
+012. ∠BEJ = ∠CAH [16] & ∠BJE = ∠ACH [22] (Similar Triangles)⇒  JB:JE = CH:CA [23]
+013. D,J,E are collinear [10] & A,C,B are collinear [01] & A,G,E are collinear [06] & ∠BDE = ∠BAE [15] ⇒  ∠BDJ = ∠CAG [24]
+014. D,J,E are collinear [10] & A,C,B are collinear [01] & C,G,F are collinear [07] & ∠CBJ = ∠CFJ [21] & D,F,E are collinear [04] ⇒  ∠BJD = ∠ACG [25]
+015. ∠BDJ = ∠CAG [24] & ∠BJD = ∠ACG [25] (Similar Triangles)⇒  JB:JD = CG:CA [26]
+016. JB:JE = CH:CA [23] & JE = JD [11] & CE = CA [03] & JB:JD = CG:CA [26] & CA = CB [00] ⇒  CB:CG = CB:HC [27]
+017. AB:CB = AB:CB [12] & CB:CG = CB:HC [27] ⇒  CG = HC
+==========================
+
+I0406 21:36:20.249316 135279079972864 alphageometry.py:205] Solution written to /home/tong_peng/onedrive_googie32u/agtest/ag.out.
+I0406 21:36:20.645020 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:36:20.645223 135279079972864 alphageometry.py:549] Worker PID=2866: Translation: "j = on_tline j e d e"
+I0406 21:36:20.645624 135279079972864 graph.py:498] 
+I0406 21:36:20.645737 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i a a d; j = on_tline j e d e ? cong c g c h
+I0406 21:36:23.653055 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:36:23.653348 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "j = on_tline j g c g"
+I0406 21:36:23.653846 135279079972864 graph.py:498] 
+I0406 21:36:23.653970 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = eqdistance i e b d, on_pline i e b d; j = on_tline j g c g ? cong c g c h
+I0406 21:36:27.031312 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:36:27.031643 135279079972864 alphageometry.py:549] Worker PID=2900: Translation: "j = on_circle j d b, on_tline j d b d"
+I0406 21:36:27.032306 135279079972864 graph.py:498] 
+I0406 21:36:27.032487 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i g c g; j = on_circle j d b, on_tline j d b d ? cong c g c h
+I0406 21:36:29.715667 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:36:29.715946 135279079972864 alphageometry.py:549] Worker PID=2866: Translation: "ERROR: Traceback (most recent call last):
+  File "/home/tong_peng/onedrive_googie32u/alphageometry/alphageometry.py", line 470, in try_translate_constrained_to_construct
+    g.copy().add_clause(clause, 0, DEFINITIONS)
+  File "/home/tong_peng/onedrive_googie32u/alphageometry/graph.py", line 2637, in add_clause
+    raise PointTooFarError()
+graph.PointTooFarError
+"
+I0406 21:36:29.716192 135279079972864 alphageometry.py:549] Worker PID=2866: Translation: "j = on_line j d f, on_bline j f d"
+I0406 21:36:29.716957 135279079972864 graph.py:498] 
+I0406 21:36:29.717258 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i a a d; j = on_line j d f, on_bline j f d ? cong c g c h
+I0406 21:36:32.949274 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:36:32.949479 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "j = on_line j e f, on_bline j f e"
+I0406 21:36:32.949885 135279079972864 graph.py:498] 
+I0406 21:36:32.950003 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = eqdistance i e b d, on_pline i e b d; j = on_line j e f, on_bline j f e ? cong c g c h
+I0406 21:36:41.680137 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:36:41.680413 135279079972864 alphageometry.py:549] Worker PID=2866: Translation: "j = on_tline j b b e"
+I0406 21:36:41.680746 135279079972864 graph.py:498] 
+I0406 21:36:41.680859 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i a a d; j = on_tline j b b e ? cong c g c h
+I0406 21:36:46.137916 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:36:46.138115 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "j = on_tline j e a g"
+I0406 21:36:46.138513 135279079972864 graph.py:498] 
+I0406 21:36:46.138630 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = eqdistance i e b d, on_pline i e b d; j = on_tline j e a g ? cong c g c h
+I0406 21:36:46.981028 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:36:46.981215 135279079972864 alphageometry.py:549] Worker PID=2900: Translation: "j = eqdistance j i c g, eqdistance j c g i"
+I0406 21:36:46.981653 135279079972864 graph.py:498] 
+I0406 21:36:46.981772 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i g c g; j = eqdistance j i c g, eqdistance j c g i ? cong c g c h
+I0406 21:36:51.426852 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:36:51.427627 135279079972864 alphageometry.py:549] Worker PID=2866: Translation: "j = on_tline j d d f"
+I0406 21:36:51.428849 135279079972864 graph.py:498] 
+I0406 21:36:51.429218 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i a a d; j = on_tline j d d f ? cong c g c h
+I0406 21:36:57.077456 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:36:57.077900 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "j = on_tline j f a d, on_tline j a d f"
+I0406 21:36:57.078405 135279079972864 graph.py:498] 
+I0406 21:36:57.078583 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = eqdistance i e b d, on_pline i e b d; j = on_tline j f a d, on_tline j a d f ? cong c g c h
+I0406 21:37:00.467643 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:37:00.467977 135279079972864 alphageometry.py:549] Worker PID=2866: Translation: "j = on_tline j i a g"
+I0406 21:37:00.468417 135279079972864 graph.py:498] 
+I0406 21:37:00.468530 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i a a d; j = on_tline j i a g ? cong c g c h
+I0406 21:37:02.528216 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:37:02.528428 135279079972864 alphageometry.py:549] Worker PID=2900: Translation: "j = on_circle j e b, on_tline j e b e"
+I0406 21:37:02.528862 135279079972864 graph.py:498] 
+I0406 21:37:02.528984 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i g c g; j = on_circle j e b, on_tline j e b e ? cong c g c h
+I0406 21:37:09.236507 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:37:09.236723 135279079972864 alphageometry.py:549] Worker PID=2866: Translation: "j = on_tline j f a g"
+I0406 21:37:09.237131 135279079972864 graph.py:498] 
+I0406 21:37:09.237249 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i a a d; j = on_tline j f a g ? cong c g c h
+I0406 21:37:09.724565 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:37:09.725005 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "j = on_bline j e a, on_pline j e a c"
+I0406 21:37:09.725809 135279079972864 graph.py:498] 
+I0406 21:37:09.726027 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = eqdistance i e b d, on_pline i e b d; j = on_bline j e a, on_pline j e a c ? cong c g c h
+I0406 21:37:17.533022 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:37:17.533642 135279079972864 alphageometry.py:549] Worker PID=2866: Translation: "j = on_tline j f a d"
+I0406 21:37:17.534647 135279079972864 graph.py:498] 
+I0406 21:37:17.534846 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i a a d; j = on_tline j f a d ? cong c g c h
+I0406 21:37:17.811438 135279079972864 alphageometry.py:549] Worker PID=2868: Translation: "j = on_circle j a g"
+I0406 21:37:17.812013 135279079972864 graph.py:498] 
+I0406 21:37:17.812188 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i a g; j = on_circle j a g ? cong c g c h
+I0406 21:37:20.141452 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:37:20.141658 135279079972864 alphageometry.py:549] Worker PID=2900: Translation: "j = on_circle j g c, on_circle j i c"
+I0406 21:37:20.142048 135279079972864 graph.py:498] 
+I0406 21:37:20.142148 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i g c g; j = on_circle j g c, on_circle j i c ? cong c g c h
+I0406 21:37:25.062191 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:37:25.062385 135279079972864 alphageometry.py:549] Worker PID=2866: Translation: "j = on_tline j d f g"
+I0406 21:37:25.062779 135279079972864 graph.py:498] 
+I0406 21:37:25.062888 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i a a d; j = on_tline j d f g ? cong c g c h
+I0406 21:37:27.287778 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:37:27.287961 135279079972864 alphageometry.py:549] Worker PID=2868: Translation: "j = on_circle j i a, on_pline j i a g"
+I0406 21:37:27.288327 135279079972864 graph.py:498] 
+I0406 21:37:27.288454 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i a g; j = on_circle j i a, on_pline j i a g ? cong c g c h
+I0406 21:37:31.861815 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:37:31.862011 135279079972864 alphageometry.py:549] Worker PID=2900: Translation: "j = eqdistance j f b d, eqdistance j d b f"
+I0406 21:37:31.862457 135279079972864 graph.py:498] 
+I0406 21:37:31.862594 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i g c g; j = eqdistance j f b d, eqdistance j d b f ? cong c g c h
+I0406 21:37:32.255301 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:37:32.255503 135279079972864 alphageometry.py:549] Worker PID=2866: Translation: "j = on_tline j f b d, on_tline j b d f"
+I0406 21:37:32.255910 135279079972864 graph.py:498] 
+I0406 21:37:32.256016 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i a a d; j = on_tline j f b d, on_tline j b d f ? cong c g c h
+I0406 21:37:38.904896 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:37:38.905115 135279079972864 alphageometry.py:549] Worker PID=2868: Translation: "j = on_circle j g a"
+I0406 21:37:38.905497 135279079972864 graph.py:498] 
+I0406 21:37:38.905614 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i a g; j = on_circle j g a ? cong c g c h
+I0406 21:37:45.942854 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:37:45.943288 135279079972864 alphageometry.py:549] Worker PID=2868: Translation: "j = on_line j f g, on_bline j g f"
+I0406 21:37:45.944226 135279079972864 graph.py:498] 
+I0406 21:37:45.944470 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i a g; j = on_line j f g, on_bline j g f ? cong c g c h
+I0406 21:37:46.129451 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:37:46.129663 135279079972864 alphageometry.py:549] Worker PID=2900: Translation: "j = eqdistance j f b d, eqdistance j b d f"
+I0406 21:37:46.130024 135279079972864 graph.py:498] 
+I0406 21:37:46.130141 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i g c g; j = eqdistance j f b d, eqdistance j b d f ? cong c g c h
+I0406 21:37:46.333416 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:37:46.333612 135279079972864 alphageometry.py:549] Worker PID=2866: Translation: "j = on_tline j f b e, on_tline j e b f"
+I0406 21:37:46.333992 135279079972864 graph.py:498] 
+I0406 21:37:46.334098 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i a a d; j = on_tline j f b e, on_tline j e b f ? cong c g c h
+I0406 21:37:50.596647 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:37:50.596966 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "j = on_bline j e a, on_circle j e c"
+I0406 21:37:50.597499 135279079972864 graph.py:498] 
+I0406 21:37:50.597680 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = eqdistance i e b d, on_pline i e b d; j = on_bline j e a, on_circle j e c ? cong c g c h
+I0406 21:37:55.204475 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:37:55.204856 135279079972864 alphageometry.py:549] Worker PID=2866: Translation: "ERROR: Traceback (most recent call last):
+  File "/home/tong_peng/onedrive_googie32u/alphageometry/alphageometry.py", line 470, in try_translate_constrained_to_construct
+    g.copy().add_clause(clause, 0, DEFINITIONS)
+  File "/home/tong_peng/onedrive_googie32u/alphageometry/graph.py", line 2637, in add_clause
+    raise PointTooFarError()
+graph.PointTooFarError
+"
+I0406 21:37:55.205193 135279079972864 alphageometry.py:549] Worker PID=2866: Translation: "ERROR: point m does not exist."
+I0406 21:37:55.205496 135279079972864 alphageometry.py:549] Worker PID=2866: Translation: "j = on_tline j f c f"
+I0406 21:37:55.206369 135279079972864 graph.py:498] 
+I0406 21:37:55.206668 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i a a d; j = on_tline j f c f ? cong c g c h
+I0406 21:37:56.761510 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:37:56.761708 135279079972864 alphageometry.py:549] Worker PID=2868: Translation: "j = on_circle j i a, on_bline j i g"
+I0406 21:37:56.762120 135279079972864 graph.py:498] 
+I0406 21:37:56.762236 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i a g; j = on_circle j i a, on_bline j i g ? cong c g c h
+I0406 21:38:00.203181 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:38:00.203947 135279079972864 alphageometry.py:549] Worker PID=2900: Translation: "j = on_circle j g b, on_circle j i b"
+I0406 21:38:00.205290 135279079972864 graph.py:498] 
+I0406 21:38:00.205653 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i g c g; j = on_circle j g b, on_circle j i b ? cong c g c h
+I0406 21:38:03.093170 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:38:03.093492 135279079972864 alphageometry.py:549] Worker PID=2866: Translation: "j = on_tline j f b e"
+I0406 21:38:03.093988 135279079972864 graph.py:498] 
+I0406 21:38:03.094102 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i a a d; j = on_tline j f b e ? cong c g c h
+I0406 21:38:06.277068 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:38:06.277499 135279079972864 alphageometry.py:549] Worker PID=2868: Translation: "j = on_line j d f, on_bline j f d"
+I0406 21:38:06.278472 135279079972864 graph.py:498] 
+I0406 21:38:06.278775 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i a g; j = on_line j d f, on_bline j f d ? cong c g c h
+I0406 21:38:09.501839 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:38:09.502068 135279079972864 alphageometry.py:549] Worker PID=2900: Translation: "j = on_line j c d, on_bline j d c"
+I0406 21:38:09.502479 135279079972864 graph.py:498] 
+I0406 21:38:09.502599 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i g c g; j = on_line j c d, on_bline j d c ? cong c g c h
+I0406 21:38:10.931700 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:38:10.931901 135279079972864 alphageometry.py:549] Worker PID=2866: Translation: "j = on_circle j e b"
+I0406 21:38:10.932282 135279079972864 graph.py:498] 
+I0406 21:38:10.932393 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i a a d; j = on_circle j e b ? cong c g c h
+I0406 21:38:11.518033 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:38:11.518240 135279079972864 alphageometry.py:549] Worker PID=2867: Translation: "j = on_line j d e, on_bline j e d"
+I0406 21:38:11.518603 135279079972864 graph.py:498] 
+I0406 21:38:11.518743 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = eqdistance i e b d, on_pline i e b d; j = on_line j d e, on_bline j e d ? cong c g c h
+I0406 21:38:15.640065 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:38:15.640356 135279079972864 alphageometry.py:549] Worker PID=2868: Translation: "j = on_line j f h, on_bline j h f"
+I0406 21:38:15.640886 135279079972864 graph.py:498] 
+I0406 21:38:15.641034 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i a g; j = on_line j f h, on_bline j h f ? cong c g c h
+I0406 21:38:17.513923 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:38:17.514285 135279079972864 alphageometry.py:549] Worker PID=2900: Translation: "j = on_line j c d, on_circle j c d"
+I0406 21:38:17.515101 135279079972864 graph.py:498] 
+I0406 21:38:17.515330 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i g c g; j = on_line j c d, on_circle j c d ? cong c g c h
+I0406 21:38:18.017590 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:38:18.017823 135279079972864 alphageometry.py:587] Worker PID=2866 beam search node 6: returning
+I0406 21:38:18.204073 135279079972864 alphageometry.py:527] Worker PID=2866 called for beam search node 8
+I0406 21:38:18.204339 135279079972864 alphageometry.py:530] Worker PID=2866: Decoding from {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : T a d f i 10 ; x00
+I0406 21:38:26.579273 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:38:26.579579 135279079972864 alphageometry.py:549] Worker PID=2868: Translation: "ERROR: Traceback (most recent call last):
+  File "/home/tong_peng/onedrive_googie32u/alphageometry/alphageometry.py", line 470, in try_translate_constrained_to_construct
+    g.copy().add_clause(clause, 0, DEFINITIONS)
+  File "/home/tong_peng/onedrive_googie32u/alphageometry/graph.py", line 2635, in add_clause
+    raise PointTooCloseError()
+graph.PointTooCloseError
+"
+I0406 21:38:26.580100 135279079972864 alphageometry.py:549] Worker PID=2868: Translation: "j = on_line j c d, on_bline j d c"
+I0406 21:38:26.580790 135279079972864 graph.py:498] 
+I0406 21:38:26.581004 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i a g; j = on_line j c d, on_bline j d c ? cong c g c h
+I0406 21:38:30.064866 135279079972864 alphageometry.py:201] 
+==========================
+ * From theorem premises:
+A B C D E F G H : Points
+B,C,A are collinear [00]
+CA = CB [01]
+CD = CA [02]
+CE = CA [03]
+F,D,E are collinear [04]
+BF ⟂ AB [05]
+G,A,E are collinear [06]
+F,C,G are collinear [07]
+H,A,D are collinear [08]
+F,C,H are collinear [09]
+
+ * Auxiliary Constructions:
+J : Points
+J,D,E are collinear [10]
+JE = JD [11]
+
+ * Proof steps:
+001. CA = CE [03] ⇒  BA:CA = BA:CA [12]
+002. CA = CB [01] & CE = CA [03] & CD = CA [02] ⇒  B,A,D,E are concyclic [13]
+003. B,A,D,E are concyclic [13] ⇒  ∠BAD = ∠BED [14]
+004. B,A,D,E are concyclic [13] ⇒  ∠BAE = ∠BDE [15]
+005. D,J,E are collinear [10] & B,C,A are collinear [00] & D,A,H are collinear [08] & ∠BED = ∠BAD [14] ⇒  ∠BEJ = ∠CAH [16]
+006. CE = CA [03] & CD = CA [02] ⇒  CD = CE [17]
+007. CD = CE [17] & JE = JD [11] ⇒  DE ⟂ CJ [18]
+008. B,C,A are collinear [00] & D,J,E are collinear [10] & F,D,E are collinear [04] & DE ⟂ CJ [18] & BF ⟂ AB [05] ⇒  ∠CBF = ∠CJF [19]
+009. ∠CBF = ∠CJF [19] ⇒  B,C,F,J are concyclic [20]
+010. B,C,F,J are concyclic [20] ⇒  ∠BCF = ∠BJF [21]
+011. D,J,E are collinear [10] & B,C,A are collinear [00] & F,C,H are collinear [09] & ∠BCF = ∠BJF [21] & F,D,E are collinear [04] ⇒  ∠BJE = ∠ACH [22]
+012. ∠BEJ = ∠CAH [16] & ∠BJE = ∠ACH [22] (Similar Triangles)⇒  JB:JE = CH:CA [23]
+013. J,D,E are collinear [10] & B,C,A are collinear [00] & G,A,E are collinear [06] & ∠BDE = ∠BAE [15] ⇒  ∠BDJ = ∠CAG [24]
+014. D,J,E are collinear [10] & B,C,A are collinear [00] & F,C,G are collinear [07] & ∠BCF = ∠BJF [21] & F,D,E are collinear [04] ⇒  ∠BJD = ∠ACG [25]
+015. ∠BDJ = ∠CAG [24] & ∠BJD = ∠ACG [25] (Similar Triangles)⇒  JB:JD = CG:CA [26]
+016. JB:JE = CH:CA [23] & JE = JD [11] & CE = CA [03] & JB:JD = CG:CA [26] ⇒  CA:CG = CA:CH [27]
+017. BA:CA = BA:CA [12] & CA:CG = CA:CH [27] ⇒  CG = CH
+==========================
+
+I0406 21:38:30.065437 135279079972864 alphageometry.py:205] Solution written to /home/tong_peng/onedrive_googie32u/agtest/ag.out.
+I0406 21:38:34.469381 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:38:34.469591 135279079972864 alphageometry.py:549] Worker PID=2868: Translation: "j = eqdistance j f a g, on_pline j f a g"
+I0406 21:38:34.470004 135279079972864 graph.py:498] 
+I0406 21:38:34.470118 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i a g; j = eqdistance j f a g, on_pline j f a g ? cong c g c h
+I0406 21:38:39.136036 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:38:39.136258 135279079972864 alphageometry.py:549] Worker PID=2900: Translation: "j = on_line j d e, on_bline j e d"
+I0406 21:38:39.136672 135279079972864 graph.py:498] 
+I0406 21:38:39.136780 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_tline i g c g; j = on_line j d e, on_bline j e d ? cong c g c h
+I0406 21:38:43.400059 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:38:43.400297 135279079972864 alphageometry.py:549] Worker PID=2868: Translation: "j = on_circle j i a"
+I0406 21:38:43.400664 135279079972864 graph.py:498] 
+I0406 21:38:43.400782 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i a g; j = on_circle j i a ? cong c g c h
+I0406 21:38:43.999250 135279079972864 alphageometry.py:549] Worker PID=3092: Translation: "j = on_circle j b g, on_circle j d g"
+I0406 21:38:44.000010 135279079972864 graph.py:498] 
+I0406 21:38:44.000227 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = eqdistance i f b d, eqdistance i b d f; j = on_circle j b g, on_circle j d g ? cong c g c h
+I0406 21:38:49.713116 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:38:49.713308 135279079972864 alphageometry.py:549] Worker PID=2868: Translation: "ERROR: Traceback (most recent call last):
+  File "/home/tong_peng/onedrive_googie32u/alphageometry/alphageometry.py", line 470, in try_translate_constrained_to_construct
+    g.copy().add_clause(clause, 0, DEFINITIONS)
+  File "/home/tong_peng/onedrive_googie32u/alphageometry/graph.py", line 2635, in add_clause
+    raise PointTooCloseError()
+graph.PointTooCloseError
+"
+I0406 21:38:49.713453 135279079972864 alphageometry.py:549] Worker PID=2868: Translation: "j = on_tline j f a d"
+I0406 21:38:49.713856 135279079972864 graph.py:498] 
+I0406 21:38:49.713969 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i a g; j = on_tline j f a d ? cong c g c h
+I0406 21:38:53.238985 135279079972864 alphageometry.py:201] 
+==========================
+ * From theorem premises:
+A B C D E F G H : Points
+C,A,B are collinear [00]
+CA = CB [01]
+CD = CA [02]
+CE = CA [03]
+E,D,F are collinear [04]
+BF ⟂ AB [05]
+C,G,F are collinear [06]
+A,E,G are collinear [07]
+C,H,F are collinear [08]
+A,H,D are collinear [09]
+
+ * Auxiliary Constructions:
+J : Points
+E,D,J are collinear [10]
+JE = JD [11]
+
+ * Proof steps:
+001. CA = CE [03] ⇒  AB:CA = AB:CA [12]
+002. CD = CA [02] & CE = CA [03] ⇒  CE = CD [13]
+003. CE = CD [13] & JE = JD [11] ⇒  DE ⟂ CJ [14]
+004. C,A,B are collinear [00] & E,D,J are collinear [10] & E,D,F are collinear [04] & DE ⟂ CJ [14] & BF ⟂ AB [05] ⇒  ∠FBC = ∠FJC [15]
+005. ∠FBC = ∠FJC [15] ⇒  C,B,J,F are concyclic [16]
+006. C,B,J,F are concyclic [16] ⇒  ∠CBJ = ∠CFJ [17]
+007. C,H,F are collinear [08] & C,A,B are collinear [00] & E,D,J are collinear [10] & ∠CBJ = ∠CFJ [17] & E,D,F are collinear [04] ⇒  ∠HCA = ∠EJB [18]
+008. CD = CA [02] & CE = CA [03] & CA = CB [01] ⇒  A,E,B,D are concyclic [19]
+009. A,E,B,D are concyclic [19] ⇒  ∠BAD = ∠BED [20]
+010. A,E,B,D are concyclic [19] ⇒  ∠EAB = ∠EDB [21]
+011. E,D,J are collinear [10] & C,A,B are collinear [00] & A,H,D are collinear [09] & ∠BED = ∠BAD [20] ⇒  ∠BEJ = ∠CAH [22]
+012. ∠HCA = ∠EJB [18] & ∠BEJ = ∠CAH [22] (Similar Triangles)⇒  CH:CA = JB:JE [23]
+013. C,F,G are collinear [06] & C,A,B are collinear [00] & E,D,J are collinear [10] & ∠CBJ = ∠CFJ [17] & E,D,F are collinear [04] ⇒  ∠GCA = ∠DJB [24]
+014. A,E,G are collinear [07] & C,A,B are collinear [00] & E,D,J are collinear [10] & ∠EAB = ∠EDB [21] ⇒  ∠GAC = ∠JDB [25]
+015. ∠GCA = ∠DJB [24] & ∠GAC = ∠JDB [25] (Similar Triangles)⇒  CG:CA = JB:JD [26]
+016. CH:CA = JB:JE [23] & CE = CA [03] & JE = JD [11] & CG:CA = JB:JD [26] ⇒  CA:CG = CA:CH [27]
+017. AB:CA = AB:CA [12] & CA:CG = CA:CH [27] ⇒  CG = CH
+==========================
+
+I0406 21:38:53.239541 135279079972864 alphageometry.py:205] Solution written to /home/tong_peng/onedrive_googie32u/agtest/ag.out.
+I0406 21:38:54.720835 135279079972864 alphageometry.py:549] Worker PID=3061: Translation: "j = on_bline j i b, on_circle j i d"
+I0406 21:38:54.721310 135279079972864 graph.py:498] 
+I0406 21:38:54.721446 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i d b, on_tline i d b d; j = on_bline j i b, on_circle j i d ? cong c g c h
+I0406 21:38:56.126976 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:38:56.127166 135279079972864 alphageometry.py:549] Worker PID=2868: Translation: "j = on_circle j d b, on_tline j d b d"
+I0406 21:38:56.127589 135279079972864 graph.py:498] 
+I0406 21:38:56.127710 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i a g; j = on_circle j d b, on_tline j d b d ? cong c g c h
+I0406 21:39:00.638771 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:39:00.639181 135279079972864 alphageometry.py:549] Worker PID=3092: Translation: "j = on_line j d f, on_bline j f d"
+I0406 21:39:00.640205 135279079972864 graph.py:498] 
+I0406 21:39:00.640492 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = eqdistance i f b d, eqdistance i b d f; j = on_line j d f, on_bline j f d ? cong c g c h
+I0406 21:39:07.888156 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:39:07.888344 135279079972864 alphageometry.py:549] Worker PID=2868: Translation: "j = on_circle j a g, on_tline j a a g"
+I0406 21:39:07.888679 135279079972864 graph.py:498] 
+I0406 21:39:07.888788 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i a g; j = on_circle j a g, on_tline j a a g ? cong c g c h
+I0406 21:39:15.073183 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:39:15.073381 135279079972864 alphageometry.py:549] Worker PID=3092: Translation: "j = on_line j d i, on_bline j i d"
+I0406 21:39:15.073718 135279079972864 graph.py:498] 
+I0406 21:39:15.073836 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = eqdistance i f b d, eqdistance i b d f; j = on_line j d i, on_bline j i d ? cong c g c h
+I0406 21:39:15.650620 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:39:15.650794 135279079972864 alphageometry.py:549] Worker PID=3061: Translation: "j = on_circle j b i, on_tline j b b i"
+I0406 21:39:15.651189 135279079972864 graph.py:498] 
+I0406 21:39:15.651305 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i d b, on_tline i d b d; j = on_circle j b i, on_tline j b b i ? cong c g c h
+I0406 21:39:17.097661 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:39:17.098130 135279079972864 alphageometry.py:549] Worker PID=2868: Translation: "j = on_circle j a d"
+I0406 21:39:17.098557 135279079972864 graph.py:498] 
+I0406 21:39:17.098665 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i a g; j = on_circle j a d ? cong c g c h
+I0406 21:39:23.051526 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:39:23.051856 135279079972864 alphageometry.py:549] Worker PID=2868: Translation: "j = on_tline j g c g"
+I0406 21:39:23.052671 135279079972864 graph.py:498] 
+I0406 21:39:23.052952 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i a g; j = on_tline j g c g ? cong c g c h
+I0406 21:39:28.515337 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:39:28.515597 135279079972864 alphageometry.py:549] Worker PID=2868: Translation: "j = on_tline j f f h"
+I0406 21:39:28.516244 135279079972864 graph.py:498] 
+I0406 21:39:28.516447 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i a g; j = on_tline j f f h ? cong c g c h
+I0406 21:39:29.003840 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:39:29.004138 135279079972864 alphageometry.py:549] Worker PID=3061: Translation: "j = on_circle j i b, on_tline j i b i"
+I0406 21:39:29.004765 135279079972864 graph.py:498] 
+I0406 21:39:29.004932 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i d b, on_tline i d b d; j = on_circle j i b, on_tline j i b i ? cong c g c h
+I0406 21:39:30.670721 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:39:30.670897 135279079972864 alphageometry.py:549] Worker PID=3092: Translation: "j = on_circle j g b, on_circle j h b"
+I0406 21:39:30.671322 135279079972864 graph.py:498] 
+I0406 21:39:30.671436 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = eqdistance i f b d, eqdistance i b d f; j = on_circle j g b, on_circle j h b ? cong c g c h
+I0406 21:39:34.026746 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:39:34.026888 135279079972864 alphageometry.py:549] Worker PID=2868: Translation: "j = on_line j e f, on_bline j f e"
+I0406 21:39:34.027255 135279079972864 graph.py:498] 
+I0406 21:39:34.027362 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i a g; j = on_line j e f, on_bline j f e ? cong c g c h
+I0406 21:39:41.835646 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:39:41.835915 135279079972864 alphageometry.py:549] Worker PID=2868: Translation: "ERROR: Traceback (most recent call last):
+  File "/home/tong_peng/onedrive_googie32u/alphageometry/alphageometry.py", line 470, in try_translate_constrained_to_construct
+    g.copy().add_clause(clause, 0, DEFINITIONS)
+  File "/home/tong_peng/onedrive_googie32u/alphageometry/graph.py", line 2635, in add_clause
+    raise PointTooCloseError()
+graph.PointTooCloseError
+"
+I0406 21:39:41.836076 135279079972864 alphageometry.py:549] Worker PID=2868: Translation: "j = on_line j c d, on_circle j c d"
+I0406 21:39:41.836421 135279079972864 graph.py:498] 
+I0406 21:39:41.836537 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i a g; j = on_line j c d, on_circle j c d ? cong c g c h
+I0406 21:39:44.631866 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:39:44.632070 135279079972864 alphageometry.py:549] Worker PID=3061: Translation: "j = on_circle j c b, on_tline j c b c"
+I0406 21:39:44.632437 135279079972864 graph.py:498] 
+I0406 21:39:44.632554 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i d b, on_tline i d b d; j = on_circle j c b, on_tline j c b c ? cong c g c h
+I0406 21:39:54.147388 135279079972864 alphageometry.py:201] 
+==========================
+ * From theorem premises:
+A B C D E F G H : Points
+B,A,C are collinear [00]
+CA = CB [01]
+CD = CA [02]
+CE = CA [03]
+D,F,E are collinear [04]
+BF ⟂ AB [05]
+G,E,A are collinear [06]
+F,G,C are collinear [07]
+H,F,C are collinear [08]
+H,D,A are collinear [09]
+
+ * Auxiliary Constructions:
+I J : Points
+IB = DF [10]
+GJ = GB [11]
+HJ = HB [12]
+
+ * Proof steps:
+001. GJ = GB [11] & HJ = HB [12] (SSS)⇒  ∠BGH = ∠HGJ [13]
+002. GJ = GB [11] & HJ = HB [12] ⇒  BJ ⟂ GH [14]
+003. F,G,C are collinear [07] & ∠BGH = ∠HGJ [13] & H,F,C are collinear [08] ⇒  ∠BGC = ∠CGJ [15]
+004. GJ = GB [11] & ∠BGC = ∠CGJ [15] (SAS)⇒  CB = CJ [16]
+005. CA = CB [01] & CE = CA [03] & CB = CJ [16] ⇒  B,E,J,A are concyclic [17]
+006. A,E,B,J are concyclic [17] ⇒  ∠BAE = ∠BJE [18]
+007. A,E,B,J are concyclic [17] ⇒  ∠BAJ = ∠BEJ [19]
+008. B,A,C are collinear [00] & E,G,A are collinear [06] & ∠BJE = ∠BAE [18] ⇒  ∠BJE = ∠CAG [20]
+009. CA = CB [01] & CB = CJ [16] ⇒  C is the circumcenter of \Delta BAJ [21]
+010. C is the circumcenter of \Delta BAJ [21] & B,A,C are collinear [00] ⇒  JB ⟂ AJ [22]
+011. B,A,C are collinear [00] & F,G,C are collinear [07] & ∠BEJ = ∠BAJ [19] & JB ⟂ AJ [22] & BJ ⟂ GH [14] & H,F,C are collinear [08] ⇒  ∠BEJ = ∠ACG [23]
+012. ∠BJE = ∠CAG [20] & ∠BEJ = ∠ACG [23] (Similar Triangles)⇒  EB:EJ = CG:CA [24]
+013. CD = CA [02] & CA = CB [01] & CE = CA [03] ⇒  C is the circumcenter of \Delta BDE [25]
+014. B,A,C are collinear [00] & AB ⟂ BF [05] ⇒  CB ⟂ BF [26]
+015. C is the circumcenter of \Delta BDE [25] & CB ⟂ BF [26] ⇒  ∠DBF = ∠DEB [27]
+016. D,F,E are collinear [04] & ∠DBF = ∠DEB [27] ⇒  ∠DBF = ∠FEB [28]
+017. D,F,E are collinear [04] ⇒  ∠DFB = ∠EFB [29]
+018. D,F,E are collinear [04] ⇒  ∠JFE = ∠JFD [30]
+019. ∠DBF = ∠FEB [28] & ∠DFB = ∠EFB [29] (Similar Triangles)⇒  DB:DF = BE:BF [31]
+020. ∠DBF = ∠FEB [28] & ∠DFB = ∠EFB [29] (Similar Triangles)⇒  DF:BF = BF:FE [32]
+021. F,G,C are collinear [07] & ∠BGH = ∠HGJ [13] & H,F,C are collinear [08] ⇒  ∠BGF = ∠FGJ [33]
+022. GJ = GB [11] & ∠BGF = ∠FGJ [33] (SAS)⇒  FB = FJ [34]
+023. DB:DF = BE:BF [31] & BI = DF [10] & FJ = BF [34] ⇒  DB:BI = BE:FJ [35]
+024. BF:FE = DF:BF [32] & FJ = BF [34] ⇒  FJ:FE = FD:FJ [36]
+025. FJ:FE = FD:FJ [36] & ∠JFE = ∠JFD [30] (Similar Triangles)⇒  JF:JE = DF:DJ [37]
+026. JF:JE = DF:DJ [37] & FB = FJ [34] & BI = DF [10] ⇒  BI:DJ = FJ:JE [38]
+027. DB:BI = BE:FJ [35] & BI:DJ = FJ:JE [38] ⇒  DB:DJ = BE:JE [39]
+028. B,E,J,A are concyclic [17] & CD = CA [02] & CA = CB [01] & CE = CA [03] ⇒  D,B,J,A are concyclic [40]
+029. D,B,J,A are concyclic [40] ⇒  ∠DAB = ∠DJB [41]
+030. H,D,A are collinear [09] & B,A,C are collinear [00] & ∠DJB = ∠DAB [41] ⇒  ∠DJB = ∠HAC [42]
+031. H,F,C are collinear [08] & BJ ⟂ GH [14] & F,G,C are collinear [07] ⇒  HF ⟂ BJ [43]
+032. CD = CA [02] & CA = CB [01] ⇒  C is the circumcenter of \Delta BDA [44]
+033. C is the circumcenter of \Delta BDA [44] & B,A,C are collinear [00] ⇒  AD ⟂ BD [45]
+034. H,D,A are collinear [09] & BD ⟂ AD [45] ⇒  DB ⟂ HD [46]
+035. HF ⟂ BJ [43] & DB ⟂ HD [46] ⇒  ∠FHD = ∠JBD [47]
+036. H,D,A are collinear [09] & H,F,C are collinear [08] & ∠FHD = ∠JBD [47] ⇒  ∠DBJ = ∠AHC [48]
+037. ∠DJB = ∠HAC [42] & ∠DBJ = ∠AHC [48] (Similar Triangles)⇒  DJ:DB = CA:CH [49]
+038. EB:EJ = CG:CA [24] & CE = CA [03] & DB:DJ = BE:JE [39] & DJ:DB = CA:CH [49] ⇒  HC:AC = GC:AC [50]
+039. AC = EC [03] ⇒  AC:FC = AC:FC [51]
+040. HC:AC = GC:AC [50] & AC:FC = AC:FC [51] ⇒  HC = GC
+==========================
+
+I0406 21:39:54.148121 135279079972864 alphageometry.py:205] Solution written to /home/tong_peng/onedrive_googie32u/agtest/ag.out.
+I0406 21:39:55.925544 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:39:55.926052 135279079972864 alphageometry.py:549] Worker PID=2868: Translation: "j = on_circle j a b"
+I0406 21:39:55.926870 135279079972864 graph.py:498] 
+I0406 21:39:55.927082 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i a g; j = on_circle j a b ? cong c g c h
+I0406 21:40:01.176547 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:40:01.176765 135279079972864 alphageometry.py:549] Worker PID=2868: Translation: "j = on_circle j a d, on_tline j a a d"
+I0406 21:40:01.177192 135279079972864 graph.py:498] 
+I0406 21:40:01.177350 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i a g; j = on_circle j a d, on_tline j a a d ? cong c g c h
+I0406 21:40:10.123482 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:40:10.123683 135279079972864 alphageometry.py:549] Worker PID=2868: Translation: "j = on_line j f g, on_pline j e b d"
+I0406 21:40:10.123999 135279079972864 graph.py:498] 
+I0406 21:40:10.124114 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i a g; j = on_line j f g, on_pline j e b d ? cong c g c h
+I0406 21:40:10.564659 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:40:10.564879 135279079972864 alphageometry.py:549] Worker PID=3061: Translation: "j = on_bline j i b, on_pline j b d i"
+I0406 21:40:10.565302 135279079972864 graph.py:498] 
+I0406 21:40:10.565432 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i d b, on_tline i d b d; j = on_bline j i b, on_pline j b d i ? cong c g c h
+I0406 21:40:19.413986 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:40:19.414096 135279079972864 alphageometry.py:587] Worker PID=2868 beam search node 5: returning
+I0406 21:40:19.525763 135279079972864 alphageometry.py:527] Worker PID=2868 called for beam search node 9
+I0406 21:40:19.526045 135279079972864 alphageometry.py:530] Worker PID=2868: Decoding from {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : D b e e i 10 T b e e i 11 ; x00
+I0406 21:40:31.543770 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:40:31.543967 135279079972864 alphageometry.py:549] Worker PID=3061: Translation: "j = on_line j b i, on_bline j i b"
+I0406 21:40:31.544381 135279079972864 graph.py:498] 
+I0406 21:40:31.544498 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i d b, on_tline i d b d; j = on_line j b i, on_bline j i b ? cong c g c h
+I0406 21:40:45.252281 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:40:45.252490 135279079972864 alphageometry.py:549] Worker PID=3061: Translation: "j = eqdistance j d b i, on_circle j i d"
+I0406 21:40:45.252821 135279079972864 graph.py:498] 
+I0406 21:40:45.252936 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i d b, on_tline i d b d; j = eqdistance j d b i, on_circle j i d ? cong c g c h
+I0406 21:41:14.303236 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:41:14.303418 135279079972864 alphageometry.py:549] Worker PID=3061: Translation: "j = on_bline j f b, on_bline j g f"
+I0406 21:41:14.303857 135279079972864 graph.py:498] 
+I0406 21:41:14.304004 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i d b, on_tline i d b d; j = on_bline j f b, on_bline j g f ? cong c g c h
+I0406 21:41:31.294658 135279079972864 alphageometry.py:231] DD+AR failed to solve the problem.
+I0406 21:41:31.294843 135279079972864 alphageometry.py:549] Worker PID=3061: Translation: "j = on_bline j i b, on_pline j i b d"
+I0406 21:41:31.295471 135279079972864 graph.py:498] 
+I0406 21:41:31.295630 135279079972864 graph.py:499] a = free a; b = free b; c = midpoint c a b; d = on_circle d c a; e = on_circle e c a; f = on_tline f b b a, on_line f d e; g = on_line g a e, on_line g c f; h = on_line h a d, on_line h c f; i = on_circle i d b, on_tline i d b d; j = on_bline j i b, on_pline j i b d ? cong c g c h
+I0406 21:41:32.860955 135279079972864 alphageometry.py:568] Worker PID={pid}: Solved.
+I0406 21:41:32.874999 135279079972864 alphageometry.py:527] Worker PID=3092 called for beam search node 10
+I0406 21:41:32.875325 135279079972864 alphageometry.py:530] Worker PID=3092: Decoding from {S} a : ; b : ; c : C a b c 00 D a c b c 01 ; d : D a c c d 02 ; e : D a c c e 03 ; f : C d e f 04 T a b b f 05 ; g : C a e g 06 C c f g 07 ; h : C a d h 08 C c f h 09 ? D c g c h {F1} x00 i : T a d c i 10 ; x00

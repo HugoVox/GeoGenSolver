@@ -1,0 +1,88 @@
+++ BATCH_SIZE=32
+++ BEAM_SIZE=128
+++ DEPTH=8
+++ NWORKERS=8
+++ PROB_FILE=/home/tong_peng/onedrive_googie32u/agtest/myexamples.txt
+++ PROB=square_angle15
+++ MODEL=alphageometry
+++ DATA=/home/tong_peng/pyvenv/ag/ag_ckpt_vocab
+++ MELIAD_PATH=/home/tong_peng/pyvenv/ag/meliad_lib/meliad
+++ export PYTHONPATH=:/home/tong_peng/onedrive_googie32u/alphageometry:/home/tong_peng/pyvenv/ag:/home/tong_peng/pyvenv/ag/meliad_lib/meliad
+++ PYTHONPATH=:/home/tong_peng/onedrive_googie32u/alphageometry:/home/tong_peng/pyvenv/ag:/home/tong_peng/pyvenv/ag/meliad_lib/meliad
+++ DDAR_ARGS=(--defs_file=$AGDIR/defs.txt --rules_file=$AGDIR/rules.txt)
+++ SEARCH_ARGS=(--beam_size=$BEAM_SIZE --search_depth=$DEPTH)
+++ LM_ARGS=(--ckpt_path=$DATA --vocab_path=$DATA/geometry.757.model --gin_search_paths=$MELIAD_PATH/transformer/configs,$AGDIR --gin_file=base_htrans.gin --gin_file=size/medium_150M.gin --gin_file=options/positions_t5.gin --gin_file=options/lr_cosine_decay.gin --gin_file=options/seq_1024_nocache.gin --gin_file=geometry_150M_generate.gin --gin_param=DecoderOnlyLanguageModelGenerate.output_token_losses=True --gin_param=TransformerTaskConfig.batch_size=$BATCH_SIZE --gin_param=TransformerTaskConfig.sequence_length=128 --gin_param=Trainer.restore_state_variables=False)
+++ true ==========================================
+++ python -m alphageometry --alsologtostderr --problems_file=/home/tong_peng/onedrive_googie32u/agtest/myexamples.txt --problem_name=square_angle15 --mode=alphageometry --defs_file=/home/tong_peng/onedrive_googie32u/alphageometry/defs.txt --rules_file=/home/tong_peng/onedrive_googie32u/alphageometry/rules.txt --beam_size=128 --search_depth=8 --ckpt_path=/home/tong_peng/pyvenv/ag/ag_ckpt_vocab --vocab_path=/home/tong_peng/pyvenv/ag/ag_ckpt_vocab/geometry.757.model --gin_search_paths=/home/tong_peng/pyvenv/ag/meliad_lib/meliad/transformer/configs,/home/tong_peng/onedrive_googie32u/alphageometry --gin_file=base_htrans.gin --gin_file=size/medium_150M.gin --gin_file=options/positions_t5.gin --gin_file=options/lr_cosine_decay.gin --gin_file=options/seq_1024_nocache.gin --gin_file=geometry_150M_generate.gin --gin_param=DecoderOnlyLanguageModelGenerate.output_token_losses=True --gin_param=TransformerTaskConfig.batch_size=32 --gin_param=TransformerTaskConfig.sequence_length=128 --gin_param=Trainer.restore_state_variables=False --out_file=/home/tong_peng/onedrive_googie32u/agtest/ag.out2 --n_workers=8
+I0310 09:41:49.753222 130464824438784 graph.py:498] square_angle15
+I0310 09:41:49.753450 130464824438784 graph.py:499] a b c d = isquare a b c d; e = s_angle c d e 15, s_angle d c e -15 ? cong e a a b
+I0310 09:41:51.728961 130464824438784 alphageometry.py:230] DD+AR failed to solve the problem.
+I0310 09:41:51.744117 130464824438784 alphageometry.py:522] Worker initializing. PID=1888
+I0310 09:41:51.753463 130464824438784 alphageometry.py:522] Worker initializing. PID=1889
+I0310 09:41:51.761840 130464824438784 alphageometry.py:522] Worker initializing. PID=1890
+I0310 09:41:51.770576 130464824438784 alphageometry.py:522] Worker initializing. PID=1891
+I0310 09:41:51.780648 130464824438784 alphageometry.py:522] Worker initializing. PID=1892
+I0310 09:41:51.790728 130464824438784 alphageometry.py:522] Worker initializing. PID=1897
+I0310 09:41:51.806141 130464824438784 alphageometry.py:522] Worker initializing. PID=2012
+I0310 09:41:51.818140 130464824438784 alphageometry.py:646] Depth 0. There are 1 nodes to expand:
+I0310 09:41:51.819088 130464824438784 alphageometry.py:650] {S} a : ; b : ; c : D a b b c 00 T a b b c 01 ; d : P a b c d 02 P a d b c 03 ; e : ^ c d c e 1. pi / 12. 04 ^ d e d c 1. pi / 12. 05 ? D e a a b {F1} x00
+I0310 09:41:51.817840 130464824438784 alphageometry.py:522] Worker initializing. PID=2147
+I0310 09:42:40.682207 130464824438784 alphageometry.py:527] Worker 0: called, beam_queue size=1
+I0310 09:42:40.682444 130464824438784 alphageometry.py:530] Worker 0: Decoding from {S} a : ; b : ; c : D a b b c 00 T a b b c 01 ; d : P a b c d 02 P a d b c 03 ; e : ^ c d c e 1. pi / 12. 04 ^ d e d c 1. pi / 12. 05 ? D e a a b {F1} x00
+I0310 09:54:59.187637 130464824438784 alphageometry.py:548] Worker 0: Translation: "ERROR: Invalid predicate ^ c b c f b f b c"
+
+I0310 09:54:59.187752 130464824438784 alphageometry.py:548] Worker 0: Translation: "ERROR: Invalid predicate ^ c d c f f c f d"
+
+I0310 09:54:59.187860 130464824438784 alphageometry.py:548] Worker 0: Translation: "f = on_circle f c d, on_circle f e d"
+
+I0310 09:54:59.188132 130464824438784 graph.py:498] 
+I0310 09:54:59.188237 130464824438784 graph.py:499] a b c d = isquare a b c d; e = s_angle c d e 15, s_angle d c e -15; f = on_circle f c d, on_circle f e d ? cong e a a b
+I0310 09:55:07.133492 130464824438784 alphageometry.py:200] 
+==========================
+ * From theorem premises:
+A B C D E : Points
+AB = BC [00]
+AB ⟂ BC [01]
+AB ∥ CD [02]
+AD ∥ BC [03]
+∠ECD = 1_1PI/12 [04]
+∠EDC = 1_PI/12 [05]
+
+ * Auxiliary Constructions:
+F : Points
+CF = CD [06]
+EF = ED [07]
+
+ * Proof steps:
+001. AB ∥ CD [02] & BC ∥ AD [03] ⇒  ∠CDA = ∠ABC [08]
+002. AD ∥ BC [03] ⇒  ∠CAD = ∠ACB [09]
+003. ∠CDA = ∠ABC [08] & ∠CAD = ∠ACB [09] (Similar Triangles)⇒  CD = AB [10]
+004. ∠CDA = ∠ABC [08] & ∠CAD = ∠ACB [09] (Similar Triangles)⇒  BA:BC = DC:DA [11]
+005. CF = CD [06] & BA:BC = DC:DA [11] & AB = BC [00] ⇒  AD = FC [12]
+006. CF = CD [06] & EF = ED [07] ⇒  DF ⟂ CE [13]
+007. CF = CD [06] & EF = ED [07] (SSS)⇒  ∠FCE = ∠ECD [14]
+008. CF = CD [06] & EF = ED [07] (SSS)⇒  ∠CFE = ∠EDC [15]
+009. DF ⟂ CE [13] & AB ⟂ BC [01] & BC ∥ AD [03] ⇒  ∠DAB = ∠(DF-CE) [16]
+010. ∠FCE = ∠ECD [14] & AB ∥ CD [02] ⇒  ∠FCE = ∠(CE-AB) [17]
+011. ∠ECD = 1_1PI/12 [04] & AB ∥ CD [02] ⇒  ∠(CE-AB) = 1_1PI/12 [18]
+012. ∠EDC = 1_PI/12 [05] & AB ∥ CD [02] ⇒  ∠(DE-AB) = 1_PI/12 [19]
+013. ∠ECF = ∠(AB-CE) [17] & ∠ECD = 1_1PI/12 [04] & AB ∥ CD [02] & ∠(DE-AB) = 1_PI/12 [19] & ∠CFE = ∠EDC [15] ⇒  ∠CFE = ∠ECF [20]
+014. ∠FCE = ∠(CE-AB) [17] & ∠CFE = ∠ECF [20] ⇒  ∠CEF = ∠(AB-CF) [21]
+015. ∠DAB = ∠(DF-CE) [16] & ∠CEF = ∠(AB-CF) [21] ⇒  ∠(AD-CF) = ∠DFE [22]
+016. CF = CD [06] ⇒  ∠CFD = ∠FDC [23]
+017. ∠CFD = ∠FDC [23] & AB ∥ CD [02] ⇒  ∠CFD = ∠(DF-AB) [24]
+018. AB ⟂ BC [01] & ∠(CE-AB) = 1_1PI/12 [18] & ∠CFD = ∠(DF-AB) [24] & DF ⟂ CE [13] (Angle chase)⇒  ∠FCB = 1_PI/3 [25]
+019. EF = ED [07] ⇒  ∠EDF = ∠DFE [26]
+020. ∠(DE-AB) = 1_PI/12 [19] & ∠(CE-AB) = 1_1PI/12 [18] & ∠EDF = ∠DFE [26] & DF ⟂ CE [13] (Angle chase)⇒  ∠DEF = 1_PI/3 [27]
+021. ∠(AD-CF) = ∠DFE [22] & AD ∥ BC [03] & ∠FCB = 1_PI/3 [25] & ∠DEF = 1_PI/3 [27] ⇒  ∠DEF = ∠EFD [28]
+022. ∠DEF = ∠EFD [28] ⇒  DE = DF [29]
+023. ∠(CE-AB) = 1_1PI/12 [18] & ∠EDC = 1_PI/12 [05] & AB ∥ CD [02] ⇒  ∠(AB-DE) = ∠(CE-AB) [30]
+024. ∠DAB = ∠(DF-CE) [16] & ∠(AB-DE) = ∠(CE-AB) [30] ⇒  ∠ADE = ∠(DF-AB) [31]
+025. ∠ADE = ∠(DF-AB) [31] & AD ∥ BC [03] & ∠CFD = ∠(DF-AB) [24] ⇒  ∠CFD = ∠ADE [32]
+026. AD = FC [12] & DE = DF [29] & ∠CFD = ∠ADE [32] (SAS)⇒  EA = DC [33]
+027. CD = AB [10] & EA = DC [33] ⇒  EA = AB
+==========================
+
+I0310 09:55:07.134036 130464824438784 alphageometry.py:204] Solution written to /home/tong_peng/onedrive_googie32u/agtest/ag.out2.
+I0310 10:09:03.396387 130464824438784 alphageometry.py:565] Worker 0: Solved.
+I0310 10:09:03.400158 130464824438784 alphageometry.py:670] Worker 0 returned. Solved=True

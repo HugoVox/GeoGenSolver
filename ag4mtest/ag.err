@@ -1,0 +1,55 @@
++ BATCH_SIZE=32
++ BEAM_SIZE=512
++ DEPTH=16
++ NWORKERS=1
++ PROB_FILE=output.txt
++ PROB=Output
++ MODEL=ddar
++ DATA=aglib/ag_ckpt_vocab
++ MELIAD_PATH=aglib/meliad
++ export PYTHONPATH=:ag4masses/alphageometry:aglib:aglib/meliad
++ PYTHONPATH=:ag4masses/alphageometry:aglib:aglib/meliad
++ DDAR_ARGS=(--defs_file=$AGDIR/defs.txt --rules_file=$AGDIR/rules.txt)
++ SEARCH_ARGS=(--beam_size=$BEAM_SIZE --search_depth=$DEPTH)
++ LM_ARGS=(--ckpt_path=$DATA --vocab_path=$DATA/geometry.757.model --gin_search_paths=$MELIAD_PATH/transformer/configs,$AGDIR --gin_file=base_htrans.gin --gin_file=size/medium_150M.gin --gin_file=options/positions_t5.gin --gin_file=options/lr_cosine_decay.gin --gin_file=options/seq_1024_nocache.gin --gin_file=geometry_150M_generate.gin --gin_param=DecoderOnlyLanguageModelGenerate.output_token_losses=True --gin_param=TransformerTaskConfig.batch_size=$BATCH_SIZE --gin_param=TransformerTaskConfig.sequence_length=128 --gin_param=Trainer.restore_state_variables=False)
++ true ==========================================
++ python -m alphageometry --alsologtostderr --problems_file=output.txt --problem_name=Output --mode=ddar --defs_file=ag4masses/alphageometry/defs.txt --rules_file=ag4masses/alphageometry/rules.txt --beam_size=512 --search_depth=16 --ckpt_path=aglib/ag_ckpt_vocab --vocab_path=aglib/ag_ckpt_vocab/geometry.757.model --gin_search_paths=aglib/meliad/transformer/configs,ag4masses/alphageometry --gin_file=base_htrans.gin --gin_file=size/medium_150M.gin --gin_file=options/positions_t5.gin --gin_file=options/lr_cosine_decay.gin --gin_file=options/seq_1024_nocache.gin --gin_file=geometry_150M_generate.gin --gin_param=DecoderOnlyLanguageModelGenerate.output_token_losses=True --gin_param=TransformerTaskConfig.batch_size=32 --gin_param=TransformerTaskConfig.sequence_length=128 --gin_param=Trainer.restore_state_variables=False --out_file=ag4mtest/ag.out --n_workers=1
+/root/Final/pyenv/lib/python3.10/site-packages/flax/struct.py:132: FutureWarning: jax.tree_util.register_keypaths is deprecated, and will be removed in a future release. Please use `register_pytree_with_keys()` instead.
+  jax.tree_util.register_keypaths(data_clz, keypaths)
+/root/Final/pyenv/lib/python3.10/site-packages/flax/struct.py:132: FutureWarning: jax.tree_util.register_keypaths is deprecated, and will be removed in a future release. Please use `register_pytree_with_keys()` instead.
+  jax.tree_util.register_keypaths(data_clz, keypaths)
+/root/Final/pyenv/lib/python3.10/site-packages/flax/struct.py:132: FutureWarning: jax.tree_util.register_keypaths is deprecated, and will be removed in a future release. Please use `register_pytree_with_keys()` instead.
+  jax.tree_util.register_keypaths(data_clz, keypaths)
+2024-11-11 21:43:09.596409: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+/root/Final/pyenv/lib/python3.10/site-packages/flax/struct.py:132: FutureWarning: jax.tree_util.register_keypaths is deprecated, and will be removed in a future release. Please use `register_pytree_with_keys()` instead.
+  jax.tree_util.register_keypaths(data_clz, keypaths)
+/root/Final/pyenv/lib/python3.10/site-packages/flax/struct.py:132: FutureWarning: jax.tree_util.register_keypaths is deprecated, and will be removed in a future release. Please use `register_pytree_with_keys()` instead.
+  jax.tree_util.register_keypaths(data_clz, keypaths)
+/root/Final/pyenv/lib/python3.10/site-packages/flax/struct.py:132: FutureWarning: jax.tree_util.register_keypaths is deprecated, and will be removed in a future release. Please use `register_pytree_with_keys()` instead.
+  jax.tree_util.register_keypaths(data_clz, keypaths)
+2024-11-11 21:43:13.151904: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1960] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+I1111 21:43:13.154345 139680164016128 graph.py:498] Output
+I1111 21:43:13.154478 139680164016128 graph.py:499] a b c = iso_triangle a b c; d = foot d a b c; e = foot e b a c; h = orthocenter h a b c; o = circle o a h e ? cyclic c e h d
+I1111 21:43:13.504182 139680164016128 ddar.py:60] Depth 1/1000 time = 0.32952165603637695
+I1111 21:43:13.505582 139680164016128 alphageometry.py:203] 
+==========================
+ * From theorem premises:
+A B C D E H : Points
+B,D,C are collinear [00]
+AD ⟂ BC [01]
+A,E,C are collinear [02]
+BE ⟂ AC [03]
+BC ⟂ HA [04]
+CA ⟂ HB [05]
+
+ * Auxiliary Constructions:
+: Points
+
+
+ * Proof steps:
+001. B,D,C are collinear [00] & BC ⟂ HA [04] & AD ⟂ BC [01] & A,E,C are collinear [02] & CA ⟂ HB [05] & BE ⟂ AC [03] ⇒  ∠CDH = ∠CEH [06]
+002. ∠CDH = ∠CEH [06] ⇒  E,D,C,H are concyclic
+==========================
+
+I1111 21:43:13.505864 139680164016128 alphageometry.py:207] Solution written to ag4mtest/ag.out.

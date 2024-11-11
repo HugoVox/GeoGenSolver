@@ -1,0 +1,43 @@
+I0218 15:36:12.138049 140279694163968 graph.py:498] ceva_menelaus_hint
+I0218 15:36:12.139024 140279694163968 graph.py:499] a b c = triangle; d = free; e = on_line b c, on_line a d; f = on_line c a, on_line b d; g = on_line a b, on_line c d; h = on_line c a, on_pline h b e f; i = on_line c d, on_pline i e a b; j = on_line b f, on_pline j e a c ? eqratio f h f a g b g a
+I0218 15:36:15.467568 140279694163968 alphageometry.py:191] 
+==========================
+ * From theorem premises:
+A B C D E F G H : Points
+B,E,C are collinear [00]
+A,D,E are collinear [01]
+A,F,C are collinear [02]
+B,D,F are collinear [03]
+A,B,G are collinear [04]
+G,D,C are collinear [05]
+HB ∥ EF [06]
+A,H,C are collinear [07]
+
+ * Auxiliary Constructions:
+I J : Points
+IE ∥ AB [08]
+D,I,C are collinear [09]
+JE ∥ AC [10]
+B,J,F are collinear [11]
+
+ * Proof steps:
+001. A,B,G are collinear [04] & EI ∥ AB [08] ⇒  BG ∥ EI [12]
+002. D,I,C are collinear [09] & G,D,C are collinear [05] ⇒  C,G,I are collinear [13]
+003. D,I,C are collinear [09] & G,D,C are collinear [05] ⇒  D,G,I are collinear [14]
+004. BG ∥ EI [12] & B,E,C are collinear [00] & C,G,I are collinear [13] ⇒  BC:EC = BG:IE [15]
+005. A,H,C are collinear [07] & A,F,C are collinear [02] ⇒  C,H,F are collinear [16]
+006. BH ∥ EF [06] & B,E,C are collinear [00] & C,H,F are collinear [16] ⇒  BC:EC = BH:EF [17]
+007. A,H,C are collinear [07] & A,F,C are collinear [02] & BH ∥ EF [06] & AC ∥ EJ [10] ⇒  ∠BHF = ∠FEJ [18]
+008. B,D,F are collinear [03] & A,H,C are collinear [07] & A,F,C are collinear [02] & B,J,F are collinear [11] & AC ∥ EJ [10] ⇒  ∠BFH = ∠FJE [19]
+009. ∠BHF = ∠FEJ [18] & ∠BFH = ∠FJE [19] (Similar Triangles)⇒  BH:EF = HF:JE [20]
+010. BC:EC = BG:IE [15] & BC:EC = BH:EF [17] & BH:EF = HF:JE [20] ⇒  HF:JE = BG:IE [21]
+011. A,G,B are collinear [04] & EI ∥ AB [08] ⇒  AG ∥ EI [22]
+012. AG ∥ EI [22] & A,D,E are collinear [01] & D,G,I are collinear [14] ⇒  DE:AD = IE:AG [23]
+013. A,C,F are collinear [02] & EJ ∥ AC [10] ⇒  JE ∥ FA [24]
+014. B,J,F are collinear [11] & B,D,F are collinear [03] ⇒  D,J,F are collinear [25]
+015. JE ∥ FA [24] & A,D,E are collinear [01] & D,J,F are collinear [25] ⇒  DE:AD = JE:AF [26]
+016. DE:AD = IE:AG [23] & DE:AD = JE:AF [26] ⇒  JE:AF = IE:AG [27]
+017. HF:JE = BG:IE [21] & JE:AF = IE:AG [27] ⇒  HF:AF = BG:AG
+==========================
+
+I0218 15:36:15.468291 140279694163968 alphageometry.py:195] Solution written to /home/tong_peng/onedrive_googie32u/agtest/ag.out4.

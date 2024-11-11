@@ -1,0 +1,81 @@
+++ BATCH_SIZE=32
+++ BEAM_SIZE=128
+++ DEPTH=8
+++ NWORKERS=8
+++ PROB_FILE=/home/tong_peng/onedrive_googie32u/agtest/myexamples.txt
+++ PROB=5circles
+++ MODEL=alphageometry
+++ DATA=/home/tong_peng/pyvenv/ag/ag_ckpt_vocab
+++ MELIAD_PATH=/home/tong_peng/pyvenv/ag/meliad_lib/meliad
+++ export PYTHONPATH=:/home/tong_peng/onedrive_googie32u/alphageometry:/home/tong_peng/pyvenv/ag:/home/tong_peng/pyvenv/ag/meliad_lib/meliad
+++ PYTHONPATH=:/home/tong_peng/onedrive_googie32u/alphageometry:/home/tong_peng/pyvenv/ag:/home/tong_peng/pyvenv/ag/meliad_lib/meliad
+++ DDAR_ARGS=(--defs_file=$AGDIR/defs.txt --rules_file=$AGDIR/rules.txt)
+++ SEARCH_ARGS=(--beam_size=$BEAM_SIZE --search_depth=$DEPTH)
+++ LM_ARGS=(--ckpt_path=$DATA --vocab_path=$DATA/geometry.757.model --gin_search_paths=$MELIAD_PATH/transformer/configs,$AGDIR --gin_file=base_htrans.gin --gin_file=size/medium_150M.gin --gin_file=options/positions_t5.gin --gin_file=options/lr_cosine_decay.gin --gin_file=options/seq_1024_nocache.gin --gin_file=geometry_150M_generate.gin --gin_param=DecoderOnlyLanguageModelGenerate.output_token_losses=True --gin_param=TransformerTaskConfig.batch_size=$BATCH_SIZE --gin_param=TransformerTaskConfig.sequence_length=128 --gin_param=Trainer.restore_state_variables=False)
+++ true ==========================================
+++ python -m alphageometry --alsologtostderr --problems_file=/home/tong_peng/onedrive_googie32u/agtest/myexamples.txt --problem_name=5circles --mode=alphageometry --defs_file=/home/tong_peng/onedrive_googie32u/alphageometry/defs.txt --rules_file=/home/tong_peng/onedrive_googie32u/alphageometry/rules.txt --beam_size=128 --search_depth=8 --ckpt_path=/home/tong_peng/pyvenv/ag/ag_ckpt_vocab --vocab_path=/home/tong_peng/pyvenv/ag/ag_ckpt_vocab/geometry.757.model --gin_search_paths=/home/tong_peng/pyvenv/ag/meliad_lib/meliad/transformer/configs,/home/tong_peng/onedrive_googie32u/alphageometry --gin_file=base_htrans.gin --gin_file=size/medium_150M.gin --gin_file=options/positions_t5.gin --gin_file=options/lr_cosine_decay.gin --gin_file=options/seq_1024_nocache.gin --gin_file=geometry_150M_generate.gin --gin_param=DecoderOnlyLanguageModelGenerate.output_token_losses=True --gin_param=TransformerTaskConfig.batch_size=32 --gin_param=TransformerTaskConfig.sequence_length=128 --gin_param=Trainer.restore_state_variables=False --out_file=/home/tong_peng/onedrive_googie32u/agtest/ag.out --n_workers=8
+I0310 12:49:36.705405 133820260323328 graph.py:498] 5circles
+I0310 12:49:36.705694 133820260323328 graph.py:499] a b c d e = pentagon a b c d e; f = on_line f b e, on_line f a c; g = on_line g a c, on_line g b d; h = on_line h b d, on_line h c e; i = on_line i c e, on_line i d a; j = on_line j d a, on_line j b e; k = circumcenter k a f j; l = circumcenter l b f g; m = circumcenter m c g h; n = circumcenter n d h i; o = circumcenter o e i j; p = on_circle p k f, on_circle p l f; q = on_circle q l g, on_circle q m g; r = on_circle r m h, on_circle r n h; s = on_circle s n i, on_circle s o i; t = on_circle t o j, on_circle t k j ? cyclic p q r t
+I0310 12:55:28.171156 133820260323328 alphageometry.py:200] 
+==========================
+ * From theorem premises:
+A B C D E F G H I J K L M N O P Q R T : Points
+F,A,C are collinear [00]
+F,E,B are collinear [01]
+D,B,G are collinear [02]
+A,G,C are collinear [03]
+D,B,H are collinear [04]
+A,I,D are collinear [05]
+E,C,I are collinear [06]
+E,J,B are collinear [07]
+KA = KF [08]
+KF = KJ [09]
+LF = LG [10]
+LB = LF [11]
+MG = MH [12]
+MC = MG [13]
+ND = NH [14]
+NH = NI [15]
+OE = OI [16]
+OI = OJ [17]
+KP = KF [18]
+LP = LF [19]
+MQ = MG [20]
+LQ = LG [21]
+NR = NH [22]
+MR = MH [23]
+KT = KJ [24]
+OT = OJ [25]
+
+ * Auxiliary Constructions:
+S : Points
+OS = OI [26]
+
+ * Proof steps:
+001. KA = KF [08] & KF = KJ [09] & KT = KJ [24] ⇒  F,A,J,T are concyclic [27]
+002. F,A,J,T are concyclic [27] & KA = KF [08] & KP = KF [18] & KF = KJ [09] ⇒  A,F,P,T are concyclic [28]
+003. A,F,P,T are concyclic [28] ⇒  ∠AFP = ∠ATP [29]
+004. ND = NH [14] & NR = NH [22] & NH = NI [15] ⇒  D,I,R,H are concyclic [30]
+005. D,I,R,H are concyclic [30] ⇒  ∠DHR = ∠DIR [31]
+006. MG = MH [12] & MR = MH [23] & MC = MG [13] ⇒  H,C,R,G are concyclic [32]
+007. H,C,R,G are concyclic [32] ⇒  ∠HGC = ∠HRC [33]
+008. I,A,D are collinear [05] & ∠DHR = ∠DIR [31] & D,B,H are collinear [04] & ∠HGC = ∠HRC [33] & D,B,G are collinear [02] & A,G,C are collinear [03] ⇒  ∠ACR = ∠AIR [34]
+009. ∠ACR = ∠AIR [34] ⇒  A,I,R,C are concyclic [35]
+010. OE = OI [16] & OI = OJ [17] & OT = OJ [25] & OS = OI [26] ⇒  E,I,J,T are concyclic [36]
+011. E,I,J,T are concyclic [36] ⇒  ∠JTI = ∠JEI [37]
+012. F,A,J,T are concyclic [27] ⇒  ∠AFJ = ∠ATJ [38]
+013. E,I,C are collinear [06] & ∠JTI = ∠JEI [37] & E,J,B are collinear [07] & ∠AFJ = ∠ATJ [38] & F,A,C are collinear [00] & F,E,B are collinear [01] ⇒  ∠CAT = ∠CIT [39]
+014. ∠CAT = ∠CIT [39] ⇒  A,I,T,C are concyclic [40]
+015. A,I,R,C are concyclic [35] & A,I,T,C are concyclic [40] ⇒  A,C,T,R are concyclic [41]
+016. A,C,T,R are concyclic [41] ⇒  ∠CAT = ∠CRT [42]
+017. ∠AFP = ∠ATP [29] & F,A,C are collinear [00] & ∠CAT = ∠CRT [42] ⇒  ∠CRT = ∠FPT [43]
+018. H,C,R,G are concyclic [32] & MG = MH [12] & MQ = MG [20] & MC = MG [13] ⇒  C,R,G,Q are concyclic [44]
+019. Q,G,C,R are concyclic [44] ⇒  ∠QGC = ∠QRC [45]
+020. LP = LF [19] & LF = LG [10] & LQ = LG [21] & LB = LF [11] ⇒  F,Q,P,G are concyclic [46]
+021. F,Q,P,G are concyclic [46] ⇒  ∠FPQ = ∠FGQ [47]
+022. ∠QGC = ∠QRC [45] & A,G,C are collinear [03] & ∠FPQ = ∠FGQ [47] & F,A,C are collinear [00] ⇒  ∠FPQ = ∠CRQ [48]
+023. ∠CRT = ∠FPT [43] & ∠FPQ = ∠CRQ [48] ⇒  ∠TPQ = ∠TRQ [49]
+024. ∠TPQ = ∠TRQ [49] ⇒  Q,P,R,T are concyclic
+==========================
+
+I0310 12:55:28.171662 133820260323328 alphageometry.py:204] Solution written to /home/tong_peng/onedrive_googie32u/agtest/ag.out.

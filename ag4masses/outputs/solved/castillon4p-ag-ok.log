@@ -1,0 +1,148 @@
+++ BATCH_SIZE=4
+++ BEAM_SIZE=256
+++ DEPTH=16
+++ OUTFILE=ag.out
++++ pwd
+++ PROB_FILE=/home/tong_peng/pyvenv/alphageometry/myexamples.txt
+++ PROB=castillon_4p
+++ MODEL=alphageometry
+++ DATA=ag_ckpt_vocab
+++ MELIAD_PATH=meliad_lib/meliad
+++ export PYTHONPATH=:meliad_lib/meliad
+++ PYTHONPATH=:meliad_lib/meliad
+++ DDAR_ARGS=(--defs_file=$(pwd)/defs.txt --rules_file=$(pwd)/rules.txt)
++++ pwd
++++ pwd
+++ SEARCH_ARGS=(--beam_size=$BEAM_SIZE --search_depth=$DEPTH)
+++ LM_ARGS=(--ckpt_path=$DATA --vocab_path=$DATA/geometry.757.model --gin_search_paths=$MELIAD_PATH/transformer/configs --gin_file=base_htrans.gin --gin_file=size/medium_150M.gin --gin_file=options/positions_t5.gin --gin_file=options/lr_cosine_decay.gin --gin_file=options/seq_1024_nocache.gin --gin_file=geometry_150M_generate.gin --gin_param=DecoderOnlyLanguageModelGenerate.output_token_losses=True --gin_param=TransformerTaskConfig.batch_size=$BATCH_SIZE --gin_param=TransformerTaskConfig.sequence_length=128 --gin_param=Trainer.restore_state_variables=False)
+++ echo :meliad_lib/meliad
+++ python -m alphageometry --alsologtostderr --problems_file=/home/tong_peng/pyvenv/alphageometry/myexamples.txt --problem_name=castillon_4p --mode=alphageometry --defs_file=/home/tong_peng/pyvenv/alphageometry/defs.txt --rules_file=/home/tong_peng/pyvenv/alphageometry/rules.txt --beam_size=256 --search_depth=16 --ckpt_path=ag_ckpt_vocab --vocab_path=ag_ckpt_vocab/geometry.757.model --gin_search_paths=meliad_lib/meliad/transformer/configs --gin_file=base_htrans.gin --gin_file=size/medium_150M.gin --gin_file=options/positions_t5.gin --gin_file=options/lr_cosine_decay.gin --gin_file=options/seq_1024_nocache.gin --gin_file=geometry_150M_generate.gin --gin_param=DecoderOnlyLanguageModelGenerate.output_token_losses=True --gin_param=TransformerTaskConfig.batch_size=4 --gin_param=TransformerTaskConfig.sequence_length=128 --gin_param=Trainer.restore_state_variables=False --out_file=ag.out
+I0204 15:41:01.128032 139642560315392 graph.py:498] castillon_4p
+I0204 15:41:01.128285 139642560315392 graph.py:499] a b c d = quadrangle a b c d; e f = segment e f; g = on_line g a f, on_circle g e f; h = on_circum h f b g, on_line h a b; i = on_line i d f, on_circle i e f; j = on_circum j f c i, on_line j c d; k = on_line k a b, on_line k c d; l = on_circum l k h j, on_circle l e f; m = on_line m l a, on_circle m e f; n = on_line n l d, on_circle n e f; o = on_line o m b, on_line o n c ? cong e f e o
+I0204 15:42:34.936169 139642560315392 alphageometry.py:221] DD+AR failed to solve the problem.
+I0204 15:42:34.936503 139642560315392 alphageometry.py:539] Depth 0. There are 1 nodes to expand:
+I0204 15:42:34.936591 139642560315392 alphageometry.py:543] {S} a : ; b : ; c : ; d : ; e : ; f : ; g : C a f g 00 D e f e g 01 ; h : C a b h 02 O b f g h 03 ; i : C d f i 04 D e f e i 05 ; j : C c d j 06 O c f i j 07 ; k : C a b k 08 C c d k 09 ; l : D e f e l 10 O h j k l 11 ; m : C a l m 12 D e f e m 13 ; n : C d l n 14 D e f e n 15 ; o : C b m o 16 C c n o 17 ? D e f e o {F1} x00
+I0204 15:42:34.936649 139642560315392 alphageometry.py:548] Decoding from {S} a : ; b : ; c : ; d : ; e : ; f : ; g : C a f g 00 D e f e g 01 ; h : C a b h 02 O b f g h 03 ; i : C d f i 04 D e f e i 05 ; j : C c d j 06 O c f i j 07 ; k : C a b k 08 C c d k 09 ; l : D e f e l 10 O h j k l 11 ; m : C a l m 12 D e f e m 13 ; n : C d l n 14 D e f e n 15 ; o : C b m o 16 C c n o 17 ? D e f e o {F1} x00
+I0204 15:46:26.592027 139642560315392 alphageometry.py:566] Translation: "p = on_line p m l, on_bline p l m"
+
+I0204 15:46:26.592694 139642560315392 graph.py:498] 
+I0204 15:46:26.592885 139642560315392 graph.py:499] a b c d = quadrangle a b c d; e f = segment e f; g = on_line g a f, on_circle g e f; h = on_circum h f b g, on_line h a b; i = on_line i d f, on_circle i e f; j = on_circum j f c i, on_line j c d; k = on_line k a b, on_line k c d; l = on_circum l k h j, on_circle l e f; m = on_line m l a, on_circle m e f; n = on_line n l d, on_circle n e f; o = on_line o m b, on_line o n c; p = on_line p m l, on_bline p l m ? cong e f e o
+I0204 15:48:34.950014 139642560315392 alphageometry.py:221] DD+AR failed to solve the problem.
+I0204 15:48:34.950472 139642560315392 alphageometry.py:566] Translation: "p = on_line p k l, on_bline p l k"
+
+I0204 15:48:34.950905 139642560315392 graph.py:498] 
+I0204 15:48:34.951006 139642560315392 graph.py:499] a b c d = quadrangle a b c d; e f = segment e f; g = on_line g a f, on_circle g e f; h = on_circum h f b g, on_line h a b; i = on_line i d f, on_circle i e f; j = on_circum j f c i, on_line j c d; k = on_line k a b, on_line k c d; l = on_circum l k h j, on_circle l e f; m = on_line m l a, on_circle m e f; n = on_line n l d, on_circle n e f; o = on_line o m b, on_line o n c; p = on_line p k l, on_bline p l k ? cong e f e o
+I0204 15:50:36.427841 139642560315392 alphageometry.py:221] DD+AR failed to solve the problem.
+I0204 15:50:36.428340 139642560315392 alphageometry.py:566] Translation: "p = on_line p f g, on_bline p g f"
+
+I0204 15:50:36.428967 139642560315392 graph.py:498] 
+I0204 15:50:36.429156 139642560315392 graph.py:499] a b c d = quadrangle a b c d; e f = segment e f; g = on_line g a f, on_circle g e f; h = on_circum h f b g, on_line h a b; i = on_line i d f, on_circle i e f; j = on_circum j f c i, on_line j c d; k = on_line k a b, on_line k c d; l = on_circum l k h j, on_circle l e f; m = on_line m l a, on_circle m e f; n = on_line n l d, on_circle n e f; o = on_line o m b, on_line o n c; p = on_line p f g, on_bline p g f ? cong e f e o
+I0204 15:52:45.975893 139642560315392 alphageometry.py:221] DD+AR failed to solve the problem.
+I0204 15:52:45.976284 139642560315392 alphageometry.py:566] Translation: "p = on_line p k l, on_circle p k l"
+
+I0204 15:52:45.976680 139642560315392 graph.py:498] 
+I0204 15:52:45.976783 139642560315392 graph.py:499] a b c d = quadrangle a b c d; e f = segment e f; g = on_line g a f, on_circle g e f; h = on_circum h f b g, on_line h a b; i = on_line i d f, on_circle i e f; j = on_circum j f c i, on_line j c d; k = on_line k a b, on_line k c d; l = on_circum l k h j, on_circle l e f; m = on_line m l a, on_circle m e f; n = on_line n l d, on_circle n e f; o = on_line o m b, on_line o n c; p = on_line p k l, on_circle p k l ? cong e f e o
+I0204 15:54:36.985071 139642560315392 alphageometry.py:221] DD+AR failed to solve the problem.
+I0204 15:54:36.985389 139642560315392 alphageometry.py:539] Depth 1. There are 4 nodes to expand:
+I0204 15:54:36.985542 139642560315392 alphageometry.py:543] {S} a : ; b : ; c : ; d : ; e : ; f : ; g : C a f g 00 D e f e g 01 ; h : C a b h 02 O b f g h 03 ; i : C d f i 04 D e f e i 05 ; j : C c d j 06 O c f i j 07 ; k : C a b k 08 C c d k 09 ; l : D e f e l 10 O h j k l 11 ; m : C a l m 12 D e f e m 13 ; n : C d l n 14 D e f e n 15 ; o : C b m o 16 C c n o 17 ? D e f e o {F1} x00 p : C m l p 18 D m p l p 19 ; x00
+I0204 15:54:36.985688 139642560315392 alphageometry.py:543] {S} a : ; b : ; c : ; d : ; e : ; f : ; g : C a f g 00 D e f e g 01 ; h : C a b h 02 O b f g h 03 ; i : C d f i 04 D e f e i 05 ; j : C c d j 06 O c f i j 07 ; k : C a b k 08 C c d k 09 ; l : D e f e l 10 O h j k l 11 ; m : C a l m 12 D e f e m 13 ; n : C d l n 14 D e f e n 15 ; o : C b m o 16 C c n o 17 ? D e f e o {F1} x00 p : C k l p 18 D k p l p 19 ; x00
+I0204 15:54:36.985815 139642560315392 alphageometry.py:543] {S} a : ; b : ; c : ; d : ; e : ; f : ; g : C a f g 00 D e f e g 01 ; h : C a b h 02 O b f g h 03 ; i : C d f i 04 D e f e i 05 ; j : C c d j 06 O c f i j 07 ; k : C a b k 08 C c d k 09 ; l : D e f e l 10 O h j k l 11 ; m : C a l m 12 D e f e m 13 ; n : C d l n 14 D e f e n 15 ; o : C b m o 16 C c n o 17 ? D e f e o {F1} x00 p : C f g p 18 D f p g p 19 ; x00
+I0204 15:54:36.985927 139642560315392 alphageometry.py:543] {S} a : ; b : ; c : ; d : ; e : ; f : ; g : C a f g 00 D e f e g 01 ; h : C a b h 02 O b f g h 03 ; i : C d f i 04 D e f e i 05 ; j : C c d j 06 O c f i j 07 ; k : C a b k 08 C c d k 09 ; l : D e f e l 10 O h j k l 11 ; m : C a l m 12 D e f e m 13 ; n : C d l n 14 D e f e n 15 ; o : C b m o 16 C c n o 17 ? D e f e o {F1} x00 p : C k l p 18 D k l k p 19 ; x00
+I0204 15:54:36.986042 139642560315392 alphageometry.py:548] Decoding from {S} a : ; b : ; c : ; d : ; e : ; f : ; g : C a f g 00 D e f e g 01 ; h : C a b h 02 O b f g h 03 ; i : C d f i 04 D e f e i 05 ; j : C c d j 06 O c f i j 07 ; k : C a b k 08 C c d k 09 ; l : D e f e l 10 O h j k l 11 ; m : C a l m 12 D e f e m 13 ; n : C d l n 14 D e f e n 15 ; o : C b m o 16 C c n o 17 ? D e f e o {F1} x00 p : C m l p 18 D m p l p 19 ; x00
+I0204 15:57:42.645735 139642560315392 alphageometry.py:566] Translation: "q = on_line q k l, on_bline q l k"
+
+I0204 15:57:42.646229 139642560315392 graph.py:498] 
+I0204 15:57:42.646357 139642560315392 graph.py:499] a b c d = quadrangle a b c d; e f = segment e f; g = on_line g a f, on_circle g e f; h = on_circum h f b g, on_line h a b; i = on_line i d f, on_circle i e f; j = on_circum j f c i, on_line j c d; k = on_line k a b, on_line k c d; l = on_circum l k h j, on_circle l e f; m = on_line m l a, on_circle m e f; n = on_line n l d, on_circle n e f; o = on_line o m b, on_line o n c; p = on_line p m l, on_bline p l m; q = on_line q k l, on_bline q l k ? cong e f e o
+I0204 16:00:04.265960 139642560315392 alphageometry.py:221] DD+AR failed to solve the problem.
+I0204 16:00:04.266489 139642560315392 alphageometry.py:566] Translation: "q = on_line q b l, on_bline q l b"
+
+I0204 16:00:04.267304 139642560315392 graph.py:498] 
+I0204 16:00:04.267570 139642560315392 graph.py:499] a b c d = quadrangle a b c d; e f = segment e f; g = on_line g a f, on_circle g e f; h = on_circum h f b g, on_line h a b; i = on_line i d f, on_circle i e f; j = on_circum j f c i, on_line j c d; k = on_line k a b, on_line k c d; l = on_circum l k h j, on_circle l e f; m = on_line m l a, on_circle m e f; n = on_line n l d, on_circle n e f; o = on_line o m b, on_line o n c; p = on_line p m l, on_bline p l m; q = on_line q b l, on_bline q l b ? cong e f e o
+I0204 16:02:36.520836 139642560315392 alphageometry.py:221] DD+AR failed to solve the problem.
+I0204 16:02:36.521435 139642560315392 alphageometry.py:566] Translation: "q = on_line q l n, on_bline q n l"
+
+I0204 16:02:36.522110 139642560315392 graph.py:498] 
+I0204 16:02:36.522347 139642560315392 graph.py:499] a b c d = quadrangle a b c d; e f = segment e f; g = on_line g a f, on_circle g e f; h = on_circum h f b g, on_line h a b; i = on_line i d f, on_circle i e f; j = on_circum j f c i, on_line j c d; k = on_line k a b, on_line k c d; l = on_circum l k h j, on_circle l e f; m = on_line m l a, on_circle m e f; n = on_line n l d, on_circle n e f; o = on_line o m b, on_line o n c; p = on_line p m l, on_bline p l m; q = on_line q l n, on_bline q n l ? cong e f e o
+I0204 16:05:21.532783 139642560315392 alphageometry.py:221] DD+AR failed to solve the problem.
+I0204 16:05:21.533322 139642560315392 alphageometry.py:566] Translation: "q = on_line q l o, on_bline q o l"
+
+I0204 16:05:21.533951 139642560315392 graph.py:498] 
+I0204 16:05:21.534170 139642560315392 graph.py:499] a b c d = quadrangle a b c d; e f = segment e f; g = on_line g a f, on_circle g e f; h = on_circum h f b g, on_line h a b; i = on_line i d f, on_circle i e f; j = on_circum j f c i, on_line j c d; k = on_line k a b, on_line k c d; l = on_circum l k h j, on_circle l e f; m = on_line m l a, on_circle m e f; n = on_line n l d, on_circle n e f; o = on_line o m b, on_line o n c; p = on_line p m l, on_bline p l m; q = on_line q l o, on_bline q o l ? cong e f e o
+I0204 16:08:19.006508 139642560315392 alphageometry.py:191] 
+==========================
+ * From theorem premises:
+A B C D E F G H I J K L M N O : Points
+F,G,A are collinear [00]
+EG = EF [01]
+B,H,A are collinear [02]
+B,F,H,G are concyclic [03]
+EI = EF [04]
+D,F,I are collinear [05]
+J,D,C are collinear [06]
+J,F,I,C are concyclic [07]
+B,A,K are collinear [08]
+D,C,K are collinear [09]
+EL = EF [10]
+H,L,J,K are concyclic [11]
+L,M,A are collinear [12]
+EM = EF [13]
+D,L,N are collinear [14]
+EN = EF [15]
+N,O,C are collinear [16]
+B,M,O are collinear [17]
+
+ * Auxiliary Constructions:
+P Q : Points
+L,M,P are collinear [18]
+PL = PM [19]
+O,L,Q are collinear [20]
+QO = QL [21]
+
+ * Proof steps:
+001. O,L,Q are collinear [20] & QO = QL [21] ⇒  Q is midpoint of LO [22]
+002. B,F,H,G are concyclic [03] ⇒  ∠BHF = ∠BGF [23]
+003. ∠BHF = ∠BGF [23] & B,H,A are collinear [02] & F,G,A are collinear [00] ⇒  ∠ABG = ∠HFA [24]
+004. B,H,A are collinear [02] & F,G,A are collinear [00] & ∠BHF = ∠BGF [23] ⇒  ∠AHF = ∠BGA [25]
+005. ∠AHF = ∠BGA [25] & ∠ABG = ∠HFA [24] (Similar Triangles)⇒  HA:FA = GA:BA [26]
+006. EG = EF [01] & EM = EF [13] & EI = EF [04] & EL = EF [10] ⇒  G,L,M,F are concyclic [27]
+007. G,L,M,F are concyclic [27] ⇒  ∠GLM = ∠GFM [28]
+008. ∠GLM = ∠GFM [28] & L,M,A are collinear [12] & F,G,A are collinear [00] ⇒  ∠GLA = ∠AFM [29]
+009. L,M,A are collinear [12] & F,G,A are collinear [00] & ∠GLM = ∠GFM [28] ⇒  ∠AMF = ∠LGA [30]
+010. ∠AMF = ∠LGA [30] & ∠GLA = ∠AFM [29] (Similar Triangles)⇒  MA:FA = GA:LA [31]
+011. HA:FA = GA:BA [26] & MA:FA = GA:LA [31] (Ratio chase)⇒  BA:MA = LA:HA [32]
+012. L,M,A are collinear [12] & B,H,A are collinear [02] ⇒  ∠BAM = ∠HAL [33]
+013. BA:MA = LA:HA [32] & ∠BAM = ∠HAL [33] (Similar Triangles)⇒  ∠(HL-AB) = ∠(AL-BM) [34]
+014. H,L,J,K are concyclic [11] ⇒  ∠HLJ = ∠HKJ [35]
+015. J,F,I,C are concyclic [07] ⇒  ∠JIF = ∠JCF [36]
+016. D,F,I are collinear [05] & ∠JIF = ∠JCF [36] & J,D,C are collinear [06] ⇒  ∠DCF = ∠JID [37]
+017. D,C,J are collinear [06] & ∠JIF = ∠JCF [36] & D,F,I are collinear [05] ⇒  ∠DFC = ∠IJD [38]
+018. ∠DCF = ∠JID [37] & ∠DFC = ∠IJD [38] (Similar Triangles)⇒  DC:DF = DI:DJ [39]
+019. EG = EF [01] & EN = EF [15] & EM = EF [13] & EI = EF [04] & F,M,G,L are concyclic [27] ⇒  I,L,N,F are concyclic [40]
+020. I,L,N,F are concyclic [40] ⇒  ∠ILN = ∠IFN [41]
+021. D,F,I are collinear [05] & D,L,N are collinear [14] & ∠ILN = ∠IFN [41] ⇒  ∠LID = ∠DNF [42]
+022. D,F,I are collinear [05] & D,L,N are collinear [14] ⇒  ∠LDI = ∠NDF [43]
+023. ∠LID = ∠DNF [42] & ∠LDI = ∠NDF [43] (Similar Triangles)⇒  LI:DL = FN:DF [44]
+024. ∠LID = ∠DNF [42] & ∠LDI = ∠NDF [43] (Similar Triangles)⇒  LI:DI = FN:DN [45]
+025. DC:DF = DI:DJ [39] & LI:DL = FN:DF [44] & LI:DI = FN:DN [45] (Ratio chase)⇒  DJ:DL = DN:DC [46]
+026. D,C,J are collinear [06] & D,L,N are collinear [14] ⇒  ∠JDL = ∠CDN [47]
+027. DJ:DL = DN:DC [46] & ∠JDL = ∠CDN [47] (Similar Triangles)⇒  ∠DJL = ∠CND [48]
+028. D,L,N are collinear [14] & O,C,N are collinear [16] & L,M,A are collinear [12] & O,M,B are collinear [17] & ∠(HL-AB) = ∠(AL-BM) [34] & ∠HLJ = ∠HKJ [35] & B,A,K are collinear [08] & B,H,A are collinear [02] & D,C,K are collinear [09] & J,D,C are collinear [06] & ∠DJL = ∠CND [48] ⇒  ∠LNO = ∠LMO [49]
+029. ∠LNO = ∠LMO [49] ⇒  O,L,M,N are concyclic [50]
+030. O,L,M,N are concyclic [50] & EG = EF [01] & EN = EF [15] & EM = EF [13] & EI = EF [04] & EL = EF [10] & F,M,G,L are concyclic [27] ⇒  O,L,M,F are concyclic [51]
+031. O,L,M,F are concyclic [51] ⇒  ∠OLF = ∠OMF [52]
+032. EM = EF [13] & EL = EF [10] ⇒  E is the circumcenter of \Delta FML [53]
+033. EM = EF [13] & EL = EF [10] ⇒  EM = EL [54]
+034. P,L,M are collinear [18] & PL = PM [19] ⇒  P is midpoint of LM [55]
+035. E is the circumcenter of \Delta FML [53] & P is midpoint of LM [55] ⇒  ∠LFM = ∠LEP [56]
+036. P is midpoint of LM [55] & Q is midpoint of LO [22] ⇒  PQ ∥ MO [57]
+037. Q,L,O are collinear [20] & ∠OLF = ∠OMF [52] & B,M,O are collinear [17] & ∠LFM = ∠LEP [56] & PQ ∥ MO [57] ⇒  ∠LEP = ∠LQP [58]
+038. ∠LEP = ∠LQP [58] ⇒  Q,L,P,E are concyclic [59]
+039. Q,L,P,E are concyclic [59] ⇒  ∠QLP = ∠QEP [60]
+040. EM = EL [54] & PL = PM [19] ⇒  ML ⟂ EP [61]
+041. ∠QLP = ∠QEP [60] & O,L,Q are collinear [20] & L,M,P are collinear [18] & L,M,A are collinear [12] & ML ⟂ EP [61] ⇒  OL ⟂ QE [62]
+042. Q is midpoint of LO [22] & OL ⟂ QE [62] ⇒  EO = EL [63]
+043. EO = EL [63] & EL = EF [10] ⇒  EF = EO
+==========================
+
+I0204 16:08:19.007035 139642560315392 alphageometry.py:195] Solution written to ag.out.
+I0204 20:43:09.655949 139642560315392 alphageometry.py:581] Solved.
