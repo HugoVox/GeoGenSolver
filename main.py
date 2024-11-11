@@ -1,11 +1,17 @@
 from reader import Reader
-from ag import *
-import os
-from deep_translator import GoogleTranslator
-os.environ["GROQ_API_KEY"]="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"
-os.environ['GITHUB_TOKEN'] ="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"
-reader = Reader(model='gpt-4o-mini') # or model='gemma2-9b-it'
-input = "Cho tam giác cân ABC (AB = AC), các đường cao AD, BE, cắt nhau tại H. Gọi O là tâm đường tròn ngoại tiếp tam giác AHE. Chứng minh tứ giác CEHD nội tiếp."
-translated = GoogleTranslator(source='vi', target='en').translate(text=input)
-reader.main(translated)
-run_ag()
+from utils import *
+import argparse
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Generate Geometry Answer')
+    parser.add_argument('--model', type=str, default='gpt-4o-mini', help='Model to use for generation', choices=['gpt-4o-mini', 'gemma2-9b-it'])
+    parser.add_argument('--question', type=str, required=True, help='Question to generate answer for')
+    args = parser.parse_args()
+    if args.model == 'gpt-4o-mini':
+        get_github_token()
+    elif args.model == 'gemma2-9b-it':
+        get_grog_api()
+    reader = Reader(model=args.model)
+    input = translate(args.question)
+    reader.main(input)
+    run_ag()
