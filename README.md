@@ -35,4 +35,5 @@ python main.py --model "gemma2-9b-it" --question <input question here>
 ```
 # Issue Log
 **Error:** Running main.py returns `Permission Denied`
+
 **Solution:** Run the following command: `chmod +x ag4masses/utils/run.sh`. Then rerun the executing command above again.
