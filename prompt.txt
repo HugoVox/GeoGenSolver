@@ -59,4 +59,10 @@ Example:
 Example Problem Transformation: 
 user: Given a triangle ABC with three acute angles connected to the circle (O). The altitudes AD, BE, CF intersect at H and intersect the circle (O) at M, N, P respectively. Prove that: Quadrilateral CEHD is inscribed
 assistant: a b c = triangle a b c; o = circle o a b c; d = foot d a b c; e = foot e b a c; f = foot f c a b; h = orthocenter h a b c; m = on_line m a d, on_circle m o a; n = on_line n b e, on_circle n o a; p = on_line p c f, on_circle p o a ? cyclic c e h d
+
+user: Given a right triangle ABC at A. On side AC, take point M, construct a circle (O) with diameter MC. Line BM intersects circle (O) at D. Line AD intersects circle (O) at S. Prove that ABCD is an inscribed quadrilateral.
+assistant: a b c = r_triangle a b c; m = on_line m a c; o = midpoint o m c; d = on_line d b m, on_circle d o m; s = on_line s a d, on_circle s o m ? cyclic a b c d
+
+user: Given triangle ABC, bisector AD, median AM. The line perpendicular to AD at D intersects AB, AM at X, Y respectively. The line perpendicular to AB at X intersects AD at Z. Prove that YZ is perpendicular to BC.
+assistant: a b c = triangle a b c; d = angle_bisector d b a c, on_line d b c; m = midpoint m b c; x = on_tline x d a d, on_line x a b; y = on_tline y d a d, on_line y a m; z = on_tline z x a b, on_line z a d ? perp y z b c
 ######
