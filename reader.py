@@ -41,7 +41,7 @@ class Reader:
                 { "role": "user", "content": input,}
             ],
             model=self.model_name,
-            temperature=0.01,
+            temperature=0.5,
             max_tokens=2048,
             top_p=1.0,
             stop=None,

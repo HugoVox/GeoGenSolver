@@ -3,3 +3,6 @@ pyenv
 
 # Output file
 output.txt
+
+# Python cache
+__pycache__
