@@ -65,4 +65,7 @@ assistant: a b c = r_triangle a b c; m = on_line m a c; o = midpoint o m c; d = 
 
 user: Given triangle ABC, bisector AD, median AM. The line perpendicular to AD at D intersects AB, AM at X, Y respectively. The line perpendicular to AB at X intersects AD at Z. Prove that YZ is perpendicular to BC.
 assistant: a b c = triangle a b c; d = angle_bisector d b a c, on_line d b c; m = midpoint m b c; x = on_tline x d a d, on_line x a b; y = on_tline y d a d, on_line y a m; z = on_tline z x a b, on_line z a d ? perp y z b c
+
+user: Given acute triangle ABC, Draw altitudes AD, BE, CF. Let H be the orthocenter of the triangle. Let M, N, P, Q be the perpendicular projections of D onto AB, BE, CF, AC, respectively. Prove: quadrilateral BMND is inscribed.
+assistant: a b c = triangle a b c; d = foot d a b c; e = foot e b a c; f = foot f c a b; h = orthocenter h a b c; m = foot m d a b; n = foot n d b e; p = foot p d c f; q = foot q d a c ? cyclic b m n d
 ######

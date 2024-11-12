@@ -12,7 +12,7 @@ AGDIR=$AG4MDIR/alphageometry
 export PYTHONPATH=$PYTHONPATH:$AGDIR:$AGLIB
 
 # stdout, solution is written here
-OUTFILE=$TESTDIR/ag.out
+OUTFILE=solution.out
 # stderr, a lot of information, error message, log etc.
 ERRFILE=$TESTDIR/ag.err
 
