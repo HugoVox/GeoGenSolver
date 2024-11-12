@@ -1,2 +1,0 @@
-Output
-a b c = iso_triangle a b c; d = foot d a b c; e = foot e b a c; h = orthocenter h a b c; o = circle o a h e ? cyclic a e d b
