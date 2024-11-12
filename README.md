@@ -19,8 +19,8 @@ Create a virtual env `pyenv` for GeoGenSolver
 ```
 virtualenv -p python3 pyenv
 . pyenv/bin/activate
-pip install --require-hashes --no-deps -r requirements_ag.txt
-pip install --no-deps -r requirements_ag.txt
+pip install --require-hashes --no-deps -r pre-requirements.txt
+pip install --no-deps -r requirements.txt
 ```
 **Note** It is important to install the requirements in the instructed order and templates.
 ## Run
