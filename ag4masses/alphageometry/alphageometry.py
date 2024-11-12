@@ -152,8 +152,8 @@ def write_solution(g: gh.Graph, p: pr.Problem, out_file: str) -> None:
       g, p.goal, merge_trivials=False
   )
 
-  solution = '\n=========================='
-  solution += '\n * From theorem premises:\n'
+  solution = ''
+  solution += 'Theo đề bài ta có:\n'
   premises_nl = []
   for premises, [points] in setup:
     solution += ' '.join([p.name.upper() for p in points]) + ' '
@@ -165,7 +165,7 @@ def write_solution(g: gh.Graph, p: pr.Problem, out_file: str) -> None:
     ]
   solution += ': Points\n' + '\n'.join(premises_nl)
 
-  solution += '\n\n * Auxiliary Constructions:\n'
+  solution += '\n\nCác điểm cần dựng thêm:\n'
   aux_premises_nl = []
   for premises, [points] in aux:
     solution += ' '.join([p.name.upper() for p in points]) + ' '
@@ -191,21 +191,18 @@ def write_solution(g: gh.Graph, p: pr.Problem, out_file: str) -> None:
       'a02': '(Angle chase)',
   }
 
-  solution += '\n\n * Proof steps:\n'
+  solution += '\n\nCác bước chứng minh:\n'
   for i, step in enumerate(proof_steps):
     _, [con] = step
     nl = proof_step_string(step, refs, last_step=i == len(proof_steps) - 1)
     rule_name = r2name.get(con.rule_name, '')
     nl = nl.replace('\u21d2', f'{rule_name}\u21d2 ')
     solution += '{:03}. '.format(i + 1) + nl + '\n'
-
-  solution += '==========================\n'
   logging.info(solution)
   if out_file:
     with open(out_file, 'w') as f:
       f.write(solution)
     logging.info('Solution written to %s.', out_file)
-
 
 def get_lm(ckpt_init: str, vocab_path: str) -> lm.LanguageModelInference:
   lm.parse_gin_configuration(
@@ -239,7 +236,8 @@ def run_ddar(g: gh.Graph, p: pr.Problem, out_file: str) -> bool:
       g.type2nodes[gh.Point],
       g.type2nodes[gh.Line],
       g.type2nodes[gh.Circle],
-      g.type2nodes[gh.Segment])
+      g.type2nodes[gh.Segment],
+      save_to="output.png",)
   return True
 
 
