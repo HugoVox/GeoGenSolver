@@ -1,2 +1,5 @@
 # Virtual environments
 pyenv
+
+# Output file
+output.txt
