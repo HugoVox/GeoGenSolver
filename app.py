@@ -28,11 +28,11 @@ if __name__ == '__main__':
                 question = gr.Textbox(lines=1, placeholder="Hãy nhập đề bài cần giải", label="Đề bài")
                 model = gr.Radio(["gpt-4o-mini", "gemma2-9b-it"], value = "gpt-4o-mini", label="Mô hình")
                 solve_button = gr.Button(value="Giải")
-            with gr.Column():
-                image = gr.Image(type="filepath", label="Hình Vẽ")
                 premises = gr.Textbox(lines=3, label="Các Giả Thuyết của Đề Bài")
                 constructions = gr.Textbox(lines=3, label="Các điểm được dựng thêm")
                 steps = gr.Textbox(lines=3, label="Các Bước Giải")
+            with gr.Column():
+                image = gr.Image(type="filepath", label="Hình Vẽ")
         solve_button.click(geogeosolver, inputs=[question, model], outputs=[image, premises, constructions, steps])
         example = gr.Examples(
             examples = [
