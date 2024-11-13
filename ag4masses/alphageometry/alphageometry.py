@@ -167,13 +167,16 @@ def write_solution(g: gh.Graph, p: pr.Problem, out_file: str) -> None:
 
   solution += '\n\nCác điểm cần dựng thêm:\n'
   aux_premises_nl = []
-  for premises, [points] in aux:
-    solution += ' '.join([p.name.upper() for p in points]) + ' '
-    aux_premises_nl += [
-        natural_language_statement(p) + ' [{:02}]'.format(refs[p.hashed()])
-        for p in premises
-    ]
-  solution += ': Points\n' + '\n'.join(aux_premises_nl)
+  if len(aux) == 0:
+    solution += 'Không cần dựng thêm điểm nào.'
+  else:
+    for premises, [points] in aux:
+      solution += ' '.join([p.name.upper() for p in points]) + ' '
+      aux_premises_nl += [
+          natural_language_statement(p) + ' [{:02}]'.format(refs[p.hashed()])
+          for p in premises
+      ]
+    solution += ': Points\n' + '\n'.join(aux_premises_nl)
 
   # some special case where the deduction rule has a well known name.
   r2name = {
