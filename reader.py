@@ -52,7 +52,7 @@ class Reader:
         """
         Write the output to the output.txt file
         """
-        with open('output.txt', 'w', encoding='utf-8') as f:
+        with open('ag4mout/output.txt', 'w', encoding='utf-8') as f:
             f.write("Output\n")
             f.write(output.strip())
     def main(self, input:str) -> str:

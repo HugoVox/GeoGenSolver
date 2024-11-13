@@ -3,7 +3,7 @@ set -e
 set -x
 
 # Directory where output files go
-TESTDIR=ag4mtest
+OUTDIR=ag4mout
 # Directory containing AG4Masses source files
 AG4MDIR=ag4masses
 # Directory containing external libraries including ag_ckpt_vocab and meliad
@@ -12,9 +12,9 @@ AGDIR=$AG4MDIR/alphageometry
 export PYTHONPATH=$PYTHONPATH:$AGDIR:$AGLIB
 
 # stdout, solution is written here
-OUTFILE=solution.out
+OUTFILE=$OUTDIR/solution.out
 # stderr, a lot of information, error message, log etc.
-ERRFILE=$TESTDIR/ag.err
+ERRFILE=$OUTDIR/ag.err
 
 # stdout and stderr are written to both ERRFILF and console
 exec > >(tee $ERRFILE) 2>&1
@@ -35,7 +35,7 @@ NWORKERS=1
 
 #The results in Google's paper can be obtained by setting BATCH_SIZE=32, BEAM_SIZE=512, DEPTH=16
 
-PROB_FILE=output.txt
+PROB_FILE=$OUTDIR/output.txt
 PROB=Output
 # alphageometry | ddar
 MODEL=ddar
