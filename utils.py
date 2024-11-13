@@ -11,7 +11,7 @@ def translate(input:str) -> str:
 def run_ag():
     subprocess.run(["ag4masses/utils/run.sh"])
 def read_solution():
-    with open('solution.out', 'r', encoding='utf-8') as f:
+    with open('ag4mout/solution.out', 'r', encoding='utf-8') as f:
         lines = f.readlines()
         paragraphs = ''.join(lines).split('\n\n')
         theorem_premises = paragraphs[0].strip()

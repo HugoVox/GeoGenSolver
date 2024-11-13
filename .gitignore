@@ -5,6 +5,10 @@ pyenv
 output.txt
 output.png
 solution.out
+ag.err
+
+# Gradio
+.gradio
 
 # Python cache
 __pycache__
