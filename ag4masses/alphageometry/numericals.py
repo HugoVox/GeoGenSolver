@@ -1210,7 +1210,7 @@ def draw(
     equals: list[tuple[Any, Any]] = None,
     block: bool = True,
     save_to: str = None,
-    theme: str = 'light',
+    theme: str = 'dark',
 ) -> None:
   """Draw everything on the same canvas."""
   plt.close()
