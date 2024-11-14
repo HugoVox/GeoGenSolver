@@ -24,7 +24,13 @@ pip install --no-deps -r requirements.txt
 ```
 **Note** It is important to install the requirements in the instructed order and templates.
 ## Run
-For example we have the following geometric problem: `Cho tam giác cân ABC (AB = AC), các đường cao AD, BE, cắt nhau tại H. Gọi O là tâm đường tròn ngoại tiếp tam giác AHE. Chứng minh rằng: Bốn điểm A, E, D, B cùng nằm trên một đường tròn.`, here is how it runs
+### Run GUI
+```
+python app.py
+```
+Then go to `http://127.0.0.1:7860` to use.
+### Run from terminal
+For example we have the following geometric problem: `Cho tam giác cân ABC (AB = AC), các đường cao AD, BE, cắt nhau tại H. Gọi O là tâm đường tròn ngoại tiếp tam giác AHE. Chứng minh rằng: Bốn điểm A, E, D, B cùng nằm trên một đường tròn.`, here is how to run:
 ```
 python main.py --question "Cho tam giác cân ABC (AB = AC), các đường cao AD, BE, cắt nhau tại H. Gọi O là tâm đường tròn ngoại tiếp tam giác AHE. Chứng minh rằng: Bốn điểm A, E, D, B cùng nằm trên một đường tròn."
 ```
@@ -36,4 +42,4 @@ python main.py --model "gemma2-9b-it" --question <input question here>
 # Issue Log
 **Error:** Running main.py returns `Permission Denied`
 
-**Solution:** Run the following command: `chmod +x ag4masses/utils/run.sh`. Then rerun the executing command above again.
+**Solution:** Run the following command: `chmod +x ag4masses/utils/run.sh`. Then rerun.
