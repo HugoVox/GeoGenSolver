@@ -41,4 +41,4 @@ if __name__ == '__main__':
             ],
             inputs = [question],
             )
-    demo.launch(share=True)
+    demo.launch()
