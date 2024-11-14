@@ -1,4 +1,6 @@
 # GeoGenSolver: Generative Illustration and Solver for Vietnamese Geometric Problem
+#Link to Huggingface Space
+`https://hugovoxx-geogensolver.hf.space`
 # Requirements
 Linux or Windows WSL with Python 3.10
 # Setup
