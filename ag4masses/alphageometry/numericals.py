@@ -1214,8 +1214,8 @@ def draw(
 ) -> None:
   """Draw everything on the same canvas."""
   plt.close()
-  imsize = 512 / 100
-  fig, ax = plt.subplots(figsize=(imsize, imsize), dpi=100)
+  imsize = 1280 / 200
+  fig, ax = plt.subplots(figsize=(imsize, imsize), dpi=200)
 
   set_theme(theme)
 

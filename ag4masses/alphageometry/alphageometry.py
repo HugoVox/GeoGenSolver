@@ -718,7 +718,7 @@ def main(_):
   # point names will be renamed to alphabetical a, b, c, d, e, ...
   # instead of staying with their original names,
   # in order to match the synthetic training data generation.
-  need_rename = _MODE.value != 'ddar'
+  need_rename = False
 
   # load problems from the problems_file,
   problems = pr.Problem.from_txt_file(

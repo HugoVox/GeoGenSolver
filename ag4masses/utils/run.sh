@@ -38,7 +38,7 @@ NWORKERS=1
 PROB_FILE=$OUTDIR/output.txt
 PROB=Output
 # alphageometry | ddar
-MODEL=ddar
+MODEL=alphageometry
 
 DATA=$AGLIB/ag_ckpt_vocab
 MELIAD_PATH=$AGLIB/meliad
